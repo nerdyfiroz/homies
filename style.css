@@ -9,12 +9,12 @@
 }
 
 :root {
-  /* Core palette: deep atmospheric night canvas matching fomies.family */
-  --obsidian: #05060c;
-  --obsidian-light: #090b14;
-  --obsidian-card: #0d101d;
-  --border: rgba(0, 240, 255, 0.16);
-  --border-hover: rgba(0, 240, 255, 0.45);
+  /* Core palette: soft sage canvas matching #E5ECCB theme */
+  --obsidian: #E5ECCB;
+  --obsidian-light: #dce3c0;
+  --obsidian-card: #d4dbb8;
+  --border: rgba(28, 35, 64, 0.15);
+  --border-hover: rgba(8, 127, 140, 0.45);
 
   /* Fomies official palette tokens */
   --ink: #1c2340;
@@ -22,25 +22,25 @@
   --ink-filed: #1c402e;
   --paper: #f4efe2;
   --paper-card: #f6f0de;
-  --cyan: #00f0ff;
-  --cyan-hi: #6bf6ff;
-  --butter: #00f0ff;
-  --butter-hi: #6bf6ff;
-  --lilac: #c9bcff;
-  --mint: #a4ecc8;
-  --coral: #ffb3a3;
+  --cyan: #087f8c;
+  --cyan-hi: #0fa89e;
+  --butter: #00d2e0;
+  --butter-hi: #38e5f3;
+  --lilac: #6d28d9;
+  --mint: #15803d;
+  --coral: #c0392b;
 
-  /* Theme Accents mapped to Fomies tokens */
-  --neon-green: #a4ecc8;
-  --neon-cyan: #00f0ff;
-  --neon-purple: #c9bcff;
-  --neon-pink: #ffb3a3;
-  --neon-yellow: #00f0ff;
+  /* Theme Accents mapped to accessible deep tones */
+  --neon-green: #15803d;
+  --neon-cyan: #087f8c;
+  --neon-purple: #6d28d9;
+  --neon-pink: #c0392b;
+  --neon-yellow: #b45309;
 
   /* Text */
-  --text-primary: #f6f0de;
-  --text-secondary: #9da3be;
-  --text-muted: #5e6480;
+  --text-primary: #1c2340;
+  --text-secondary: #3b425e;
+  --text-muted: #555c7a;
 
   /* Fonts: unified font style matching fomies.family */
   --font-pixel: 'Chewy', cursive, sans-serif;
@@ -58,7 +58,7 @@ html {
 }
 
 body {
-  background: #05060c;
+  background: #E5ECCB;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-weight: 700;
@@ -91,7 +91,7 @@ img {
   z-index: 10000;
   display: grid;
   place-items: center;
-  background: #05060cb8;
+  background: #E5ECCBb8;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background .45s ease, backdrop-filter .45s ease, -webkit-backdrop-filter .45s ease;
@@ -100,7 +100,7 @@ img {
 }
 
 #intro.gone {
-  background: #05060c00;
+  background: #E5ECCB00;
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   pointer-events: none;
@@ -288,7 +288,7 @@ img {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  background: #05060c;
+  background: #E5ECCB;
 }
 
 /* Dynamic NFT Canvas */
@@ -526,7 +526,7 @@ header {
   letter-spacing: 1px;
   line-height: 1;
   font-weight: 800;
-  background: linear-gradient(90deg, #6bf6ff, #00f0ff, #c9bcff);
+  background: linear-gradient(90deg, #0284c7, #087f8c, #6d28d9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -539,7 +539,7 @@ header {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--cyan);
-  opacity: 0.9;
+  opacity: 1;
   margin-top: 1px;
 }
 
@@ -567,7 +567,7 @@ header {
 
 .nav-btn:hover {
   color: var(--neon-green);
-  border-color: rgba(0, 240, 160, 0.3);
+  border-color: rgba(21, 128, 61, 0.4);
 }
 
 .nav-btn--icon {
@@ -607,7 +607,7 @@ header {
   justify-content: center;
   padding: 6px 16px;
   border-radius: 999px;
-  background: rgba(0, 240, 255, 0.12);
+  background: rgba(8, 127, 140, 0.12);
   border: 1.5px solid var(--cyan);
   font-family: var(--font-body);
   font-weight: 800;
@@ -631,7 +631,7 @@ header {
   letter-spacing: 0.5px;
   font-weight: 900;
   color: var(--ink);
-  background: var(--cyan);
+  background: var(--butter);
   box-shadow: 2.5px 2.5px 0 var(--ink);
   display: flex;
   align-items: center;
@@ -640,7 +640,7 @@ header {
 }
 
 .btn-primary:hover {
-  background: var(--cyan-hi);
+  background: var(--butter-hi);
   box-shadow: 3.5px 3.5px 0 var(--ink);
   transform: translateY(-2px);
 }
@@ -679,8 +679,8 @@ header {
   gap: 8px;
   padding: 8px 18px;
   border-radius: 999px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1.5px solid rgba(0, 240, 255, 0.35);
+  background: rgba(8, 127, 140, 0.1);
+  border: 1.5px solid rgba(8, 127, 140, 0.35);
   color: var(--cyan);
   font-family: var(--font-body);
   font-weight: 800;
@@ -688,7 +688,7 @@ header {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 32px;
-  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(8, 127, 140, 0.08);
   animation: fadeInUp 0.8s ease-out both;
 }
 
@@ -704,7 +704,7 @@ header {
   font-size: clamp(38px, 6.5vw, 76px);
   font-weight: 800;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: var(--text-primary);
   max-width: 850px;
   line-height: 1.15;
   margin-bottom: 0;
@@ -713,11 +713,11 @@ header {
 
 .hero-title .highlight {
   color: var(--cyan);
-  background: linear-gradient(90deg, #6bf6ff, #00f0ff, #c9bcff);
+  background: linear-gradient(90deg, #0284c7, #087f8c, #6d28d9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.35));
+  filter: drop-shadow(0 2px 10px rgba(8, 127, 140, 0.25));
 }
 
 .hero-desc {
@@ -751,8 +751,8 @@ header {
   letter-spacing: 0.03em;
   font-weight: 900;
   color: var(--ink);
-  background: var(--cyan);
-  box-shadow: 3.5px 3.5px 0 var(--ink), 0 8px 30px rgba(0, 240, 255, 0.35);
+  background: var(--butter);
+  box-shadow: 3.5px 3.5px 0 var(--ink), 0 8px 30px rgba(0, 210, 224, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -761,8 +761,8 @@ header {
 }
 
 .hero-cta .btn-hero:hover {
-  background: var(--cyan-hi);
-  box-shadow: 4.5px 4.5px 0 var(--ink), 0 12px 35px rgba(0, 240, 255, 0.45);
+  background: var(--butter-hi);
+  box-shadow: 4.5px 4.5px 0 var(--ink), 0 12px 35px rgba(0, 210, 224, 0.45);
   transform: translateY(-2px);
 }
 
@@ -782,51 +782,1060 @@ header {
 }
 
 /* ===== MARQUEE / SCROLLING GALLERY ===== */
-.marquee-section {
+/* ===== NFT TRAIN & RAILWAY SCENERY SECTION ===== */
+.train-section {
   position: relative;
   z-index: 10;
-  padding: 0 0 60px 0;
+  padding: 10px 0 70px 0;
   overflow: hidden;
 }
 
-.marquee-track {
+.train-scene {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   1. SCENERY BACKDROP: Trees with User's Feather Leaves & Landscape
+   ========================================================================== */
+.railway-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Distant rolling hills in soft thematic sage tones */
+.scenic-hills {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: 
+    radial-gradient(ellipse 900px 100px at 25% 100%, rgba(188, 199, 155, 0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 1100px 120px at 75% 100%, rgba(197, 208, 164, 0.4) 0%, transparent 70%);
+  border-bottom: 2px solid rgba(135, 148, 102, 0.25);
+}
+
+/* Forest of Trees featuring the user's stylized feather leaf */
+.scenic-forest {
+  position: absolute;
+  inset: 0;
+  bottom: 45px;
+}
+
+.feather-tree {
+  position: absolute;
+  bottom: 0;
   display: flex;
-  gap: 20px;
-  animation: marqueeScroll 25s linear infinite;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  animation: treeBreeze 5.5s ease-in-out infinite alternate;
+}
+
+.tree--1 { left: 4%; height: 240px; animation-delay: 0s; }
+.tree--2 { left: 20%; height: 265px; animation-delay: -1.2s; }
+.tree--3 { left: 38%; height: 235px; animation-delay: -2.5s; }
+.tree--4 { left: 56%; height: 275px; animation-delay: -0.7s; }
+.tree--5 { left: 74%; height: 250px; animation-delay: -3.1s; }
+.tree--6 { left: 91%; height: 245px; animation-delay: -1.8s; }
+
+@keyframes treeBreeze {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(1.4deg) skewX(0.8deg); }
+  100% { transform: rotate(-0.8deg); }
+}
+
+/* Organic Timber Tree Trunk */
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  background: linear-gradient(90deg, #382413 0%, #543922 45%, #6d4b2e 70%, #382413 100%);
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.tree-trunk::before,
+.tree-trunk::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 3px;
+}
+
+/* Branch forks */
+.trunk--straight { height: 160px; width: 14px; }
+.trunk--straight::before {
+  top: 35px; left: -16px; width: 22px; height: 9px;
+  transform: rotate(-35deg); border-radius: 4px;
+}
+.trunk--straight::after {
+  top: 60px; right: -18px; width: 24px; height: 8px;
+  transform: rotate(32deg); border-radius: 4px;
+}
+
+.trunk--curved-left {
+  height: 155px; width: 15px;
+  transform-origin: bottom center;
+  transform: rotate(-3deg);
+}
+.trunk--curved-left::before {
+  top: 40px; left: -22px; width: 26px; height: 9px;
+  transform: rotate(-40deg);
+}
+.trunk--curved-left::after {
+  top: 75px; right: -15px; width: 20px; height: 8px;
+  transform: rotate(28deg);
+}
+
+.trunk--curved-right {
+  height: 150px; width: 15px;
+  transform: rotate(3deg);
+}
+.trunk--curved-right::before {
+  top: 45px; right: -22px; width: 26px; height: 9px;
+  transform: rotate(40deg);
+}
+.trunk--curved-right::after {
+  top: 80px; left: -16px; width: 20px; height: 8px;
+  transform: rotate(-28deg);
+}
+
+.trunk--tall { height: 185px; width: 17px; }
+.trunk--tall::before {
+  top: 50px; left: -24px; width: 28px; height: 10px;
+  transform: rotate(-36deg);
+}
+.trunk--tall::after {
+  top: 90px; right: -22px; width: 26px; height: 9px;
+  transform: rotate(35deg);
+}
+
+/* Canopy Boughs holding the user's leaf foliage */
+.tree-boughs {
+  position: absolute;
+  top: 10px;
+  width: 170px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.leaf-branch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Leaf sprite styling using assets/leaf-feather.png */
+.feather-leaf {
+  position: absolute;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 3px 6px rgba(18, 50, 15, 0.35));
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Leaf cluster arrangements */
+.fl-1 { width: 50px; height: 68px; top: 12px; left: 10px; transform: rotate(-48deg); }
+.fl-2 { width: 44px; height: 60px; top: 38px; left: 2px; transform: rotate(-72deg); filter: brightness(0.88); }
+.fl-3 { width: 48px; height: 64px; top: 62px; left: 16px; transform: rotate(-32deg); filter: brightness(0.95); }
+.fl-4 { width: 54px; height: 72px; top: -6px; left: 56px; transform: rotate(-5deg); filter: brightness(1.05); }
+.fl-5 { width: 48px; height: 65px; top: 22px; left: 62px; transform: rotate(12deg); }
+.fl-6 { width: 45px; height: 62px; top: 48px; left: 50px; transform: rotate(-18deg); filter: brightness(0.92); }
+.fl-7 { width: 52px; height: 70px; top: 10px; right: 12px; transform: rotate(44deg); filter: brightness(1.02); }
+.fl-8 { width: 46px; height: 62px; top: 42px; right: 4px; transform: rotate(68deg); filter: brightness(0.85); }
+
+/* Trackside shrubs along the ballast gravel */
+.trackside-bushes {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 45px;
+  z-index: 1;
+}
+
+.track-bush {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 42px;
+}
+
+.bush--1 { left: 12%; }
+.bush--2 { left: 34%; }
+.bush--3 { left: 66%; }
+.bush--4 { left: 86%; }
+
+.bush-leaf {
+  position: absolute;
+  width: 28px;
+  height: 38px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.bl-1 { bottom: 0; left: 0; transform: rotate(-35deg); filter: brightness(0.9); }
+.bl-2 { bottom: 4px; left: 16px; transform: rotate(8deg); filter: brightness(1.08); }
+.bl-3 { bottom: 0; left: 30px; transform: rotate(40deg); filter: brightness(0.85); }
+
+/* Wind-drifted leaves floating in the sky */
+.drifting-leaves-area {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drift-leaf {
+  position: absolute;
+  width: 22px;
+  height: 30px;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  animation: leafFloat linear infinite;
+}
+
+.dl-1 { top: 40px; animation-duration: 18s; animation-delay: 0s; }
+.dl-2 { top: 90px; animation-duration: 22s; animation-delay: -6s; width: 18px; height: 24px; }
+.dl-3 { top: 65px; animation-duration: 16s; animation-delay: -11s; width: 24px; height: 32px; }
+
+@keyframes leafFloat {
+  0% { transform: translateX(105vw) translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.85; }
+  50% { transform: translateX(50vw) translateY(18px) rotate(180deg); }
+  90% { opacity: 0.85; }
+  100% { transform: translateX(-10vw) translateY(-10px) rotate(360deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   2. REALISTIC RAILWAY TRACK SYSTEM
+   ========================================================================== */
+.railway-system {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 2;
+}
+
+/* 3D Ballast Gravel Embankment with crushed rock texture */
+.ballast-bed {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: 
+    linear-gradient(180deg, rgba(82, 70, 52, 0.95) 0%, rgba(68, 57, 42, 0.98) 60%, rgba(50, 41, 30, 1) 100%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(35, 28, 18, 0.35);
+}
+
+.ballast-texture {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(200, 185, 160, 0.22) 1.5px, transparent 2px),
+    radial-gradient(circle at 45% 65%, rgba(40, 32, 22, 0.35) 2px, transparent 2.5px),
+    radial-gradient(circle at 80% 30%, rgba(180, 165, 140, 0.2) 1.5px, transparent 2px),
+    radial-gradient(circle at 25% 80%, rgba(45, 38, 28, 0.3) 1.8px, transparent 2.2px);
+  background-size: 16px 14px;
+  opacity: 0.85;
+}
+
+.ballast-shoulder {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(180deg, rgba(50, 41, 30, 0.8) 0%, rgba(135, 148, 102, 0.35) 100%);
+}
+
+/* Continuous Heavy Creosoted Wooden Railroad Ties / Sleepers with Tie-Plates */
+.rail-sleepers {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2b1c11 0px,
+    #3f2c1b 2px,
+    #4a3422 6px,
+    #332114 12px,
+    #1d1209 14px,
+    transparent 14px,
+    transparent 28px
+  );
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Dual Polished Forged Steel Rails */
+.steel-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 22%, #64748b 55%, #334155 85%, #0f172a 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-radius: 1px;
+}
+
+.steel-rail.rail--top {
+  top: 7px;
+  height: 5px;
+  opacity: 0.92;
+}
+
+.steel-rail.rail--bottom {
+  top: 25px;
+  height: 7px;
+}
+
+.rail-crown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #fff 0%, #e2e8f0 50%, #fff 100%);
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   3. MOVING TRAIN: LOCOMOTIVE & FLATBED CARS
+   ========================================================================== */
+.train-track {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
   width: max-content;
+  z-index: 5;
+  animation: trainScroll 32s linear infinite;
+  will-change: transform;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marqueeScroll {
+@keyframes trainScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-.marquee-item {
-  width: 160px;
-  height: 160px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 2px solid var(--border);
+.train-set {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Shared Train Car Base */
+.train-car {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-shrink: 0;
-  transition: all 0.4s ease;
+  animation: trainTrackRumble 0.45s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes trainTrackRumble {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-1.8px); }
+}
+
+/* --------------------------------------------------------------------------
+   A. AUTHENTIC STEAM LOCOMOTIVE
+   -------------------------------------------------------------------------- */
+.locomotive {
+  width: 235px;
+  margin-right: 12px;
+}
+
+.loco-body {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  height: 122px;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+}
+
+/* Engineer's Cab */
+.loco-cabin {
+  width: 82px;
+  height: 104px;
+  background: linear-gradient(180deg, #2b313d 0%, #1c212b 60%, #12161f 100%);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  border: 2px solid #0d1017;
+  border-bottom: 3px solid #0a0d13;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.loco-cab-roof {
+  position: absolute;
+  top: -6px;
+  left: -4px;
+  right: -4px;
+  height: 9px;
+  background: linear-gradient(180deg, #3d4656 0%, #1e2430 100%);
+  border-radius: 6px 6px 1px 1px;
+  border: 1.5px solid #0d1017;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.loco-window {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 36px;
+  background: linear-gradient(135deg, #1c150c 0%, #2e1d0d 100%);
+  border: 2px solid #5a462f;
+  border-radius: 4px 4px 2px 2px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.firebox-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 80%, rgba(255, 160, 30, 0.85) 0%, rgba(255, 80, 0, 0.5) 45%, transparent 75%);
+  animation: fireboxFlicker 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes fireboxFlicker {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.loco-driver {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  width: 22px;
+  height: 26px;
+  background: #0f131a;
+  border-radius: 10px 10px 0 0;
+  box-shadow: -2px 0 0 rgba(255, 170, 40, 0.3);
+}
+
+.loco-cab-handrail {
+  position: absolute;
+  bottom: 12px;
+  right: 5px;
+  width: 4px;
+  height: 48px;
+  background: linear-gradient(90deg, #d4af37, #f1c40f, #997a15);
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Cylindrical Boiler Barrel */
+.loco-boiler {
+  width: 110px;
+  height: 74px;
+  background: linear-gradient(180deg, #383f4d 0%, #242a36 30%, #161a22 70%, #0d0f14 100%);
+  border-radius: 6px 28px 2px 2px;
+  position: relative;
+  border: 2px solid #0d1017;
+  border-bottom: 3px solid #080a0f;
+  box-shadow: 
+    inset 0 4px 8px rgba(255, 255, 255, 0.15),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.7);
+}
+
+.boiler-highlight {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  right: 15px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.28) 40%, transparent 95%);
+  border-radius: 2px;
+}
+
+/* Polished Brass Boiler Bands */
+.loco-band {
+  position: absolute;
+  width: 5px;
+  top: 4px;
+  bottom: 4px;
+  background: linear-gradient(180deg, #f9e79f 0%, #d4ac0d 40%, #b7950b 80%, #7d6608 100%);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.loco-band--1 { left: 16px; }
+.loco-band--2 { left: 42px; }
+.loco-band--3 { left: 68px; }
+.loco-band--4 { left: 92px; }
+
+/* Boiler Top Hardware */
+.steam-dome {
+  position: absolute;
+  top: -18px;
+  left: 28px;
+  width: 22px;
+  height: 20px;
+  background: radial-gradient(circle at 40% 30%, #f7dc6f 0%, #d4ac0d 60%, #7d6608 100%);
+  border-radius: 12px 12px 2px 2px;
+  border: 1.5px solid #5d4037;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.safety-valve {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 6px;
+  background: #f1c40f;
+  border-radius: 2px;
+}
+
+.sand-dome {
+  position: absolute;
+  top: -14px;
+  left: 78px;
+  width: 18px;
+  height: 16px;
+  background: linear-gradient(180deg, #2d3340 0%, #161922 100%);
+  border-radius: 10px 10px 2px 2px;
+  border: 1.5px solid #0d1017;
+}
+
+.loco-bell {
+  position: absolute;
+  top: -11px;
+  left: 54px;
+  width: 10px;
+  height: 12px;
+  background: linear-gradient(180deg, #f9e79f, #b7950b);
+  border-radius: 5px 5px 2px 2px;
+  border: 1px solid #7d6608;
+}
+
+.boiler-handrail {
+  position: absolute;
+  top: 36px;
+  left: 6px;
+  right: 12px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #d4af37, #f1c40f);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Front Smokebox & High Lantern Headlight */
+.loco-front {
+  width: 34px;
+  height: 58px;
+  background: linear-gradient(180deg, #212631 0%, #11141a 100%);
+  border-radius: 4px 14px 4px 4px;
+  position: relative;
+  border: 2px solid #090b0e;
+}
+
+.smokebox-plate {
+  position: absolute;
+  top: 20px;
+  left: 4px;
+  width: 22px;
+  height: 12px;
+  background: #990000;
+  border: 1.5px solid #d4af37;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smokebox-plate span {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* Headlight Lantern with Projected Light Beam */
+.loco-headlight {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, #f9e79f 0%, #d4ac0d 65%, #7d6608 100%);
+  border-radius: 50%;
+  border: 2px solid #332200;
+  box-shadow: 0 0 12px rgba(241, 196, 15, 0.95), 0 0 25px rgba(241, 196, 15, 0.5);
+}
+
+.headlight-lens {
+  position: absolute;
+  inset: 2px;
+  background: radial-gradient(circle, #ffffff 20%, #fff9c4 70%, #f1c40f 100%);
+  border-radius: 50%;
+}
+
+.headlight-beam {
+  position: absolute;
+  top: -8px;
+  left: -90px;
+  width: 95px;
+  height: 34px;
+  background: linear-gradient(270deg, rgba(255, 243, 176, 0.55) 0%, rgba(255, 230, 100, 0.18) 55%, transparent 100%);
+  clip-path: polygon(100% 30%, 100% 70%, 0% 100%, 0% 0%);
+  pointer-events: none;
+}
+
+/* Realistic Steel Cowcatcher / Pilot Wedge */
+.loco-cowcatcher {
+  position: absolute;
+  bottom: -6px;
+  left: -10px;
+  width: 22px;
+  height: 18px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #3f4857 0px,
+    #3f4857 2px,
+    #1e232d 2px,
+    #1e232d 5px
+  );
+  clip-path: polygon(100% 0%, 0% 70%, 0% 100%, 100% 100%);
+  border-bottom: 3px solid #11141a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Flanged Cast Iron Chimney & Steam Particles */
+.chimney {
+  position: absolute;
+  top: -44px;
+  left: 104px;
+  width: 22px;
+  height: 38px;
+  background: linear-gradient(180deg, #2b313d 0%, #151820 100%);
+  border: 2px solid #090b0e;
+  border-radius: 2px;
+}
+
+.chimney-cap {
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  right: -4px;
+  height: 7px;
+  background: linear-gradient(180deg, #d4af37 0%, #7d6608 100%);
+  border: 1.5px solid #090b0e;
+  border-radius: 4px;
+}
+
+/* Realistic expanding steam clouds */
+.smoke-puff {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(245, 245, 250, 0.82) 0%, rgba(200, 205, 215, 0.45) 50%, transparent 80%);
+  filter: blur(2px);
+  animation: realisticSmoke 2.2s ease-out infinite;
+}
+
+.smoke-puff--1 { width: 22px; height: 22px; top: -28px; left: -2px; animation-delay: 0s; }
+.smoke-puff--2 { width: 30px; height: 30px; top: -46px; left: 8px; animation-delay: 0.45s; }
+.smoke-puff--3 { width: 40px; height: 40px; top: -68px; left: 24px; animation-delay: 0.9s; }
+.smoke-puff--4 { width: 50px; height: 50px; top: -90px; left: 45px; animation-delay: 1.35s; }
+.smoke-puff--5 { width: 64px; height: 64px; top: -115px; left: 70px; animation-delay: 1.8s; }
+
+@keyframes realisticSmoke {
+  0% {
+    opacity: 0.85;
+    transform: translateY(0) translateX(0) scale(0.45);
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) translateX(95px) scale(2.4);
+  }
+}
+
+/* Running Gear with Working Mechanical Connecting Rods */
+.loco-running-gear {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  margin-top: -6px;
+  z-index: 4;
+}
+
+.steam-cylinder {
+  position: absolute;
+  top: 6px;
+  left: 20px;
+  width: 36px;
+  height: 18px;
+  background: linear-gradient(180deg, #2b313d, #12151c);
+  border: 1.5px solid #090b0e;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.crosshead-guide {
+  position: absolute;
+  top: 7px;
+  right: -24px;
+  width: 26px;
+  height: 4px;
+  background: linear-gradient(90deg, #cbd5e1, #64748b);
+  border-radius: 1px;
+}
+
+/* Heavy Drive Wheels */
+.loco-wheels {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-right: 14px;
   position: relative;
 }
 
-.marquee-item:hover {
-  border-color: var(--neon-green);
-  transform: scale(1.08) translateY(-6px);
-  box-shadow: 0 0 30px rgba(0, 240, 160, 0.2);
+.wheel {
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), inset 0 0 4px rgba(255, 255, 255, 0.2);
 }
 
-.marquee-item img {
+.wheel--driver {
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle, #252a35 0%, #151821 70%, #475569 88%, #0f1218 100%);
+  border: 3px solid #0a0d13;
+  animation: wheelSpin 0.9s linear infinite;
+}
+
+.wheel-counterweight {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  right: 6px;
+  height: 14px;
+  background: #333d4b;
+  border-radius: 12px 12px 0 0;
+}
+
+.wheel-crankpin {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, #f1c40f, #7d6608);
+  border-radius: 50%;
+  border: 1px solid #222;
+}
+
+.wheel--pilot {
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle, #2c3340 0%, #13161c 70%, #475569 90%, #0a0d13 100%);
+  border: 2px solid #0a0d13;
+  align-self: flex-end;
+  margin-right: auto;
+  margin-left: 28px;
+  animation: wheelSpin 0.55s linear infinite;
+}
+
+@keyframes wheelSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Working Mechanical Reciprocating Connecting Rods */
+.loco-side-rod {
+  position: absolute;
+  bottom: 14px;
+  right: 28px;
+  width: 58px;
+  height: 6px;
+  background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+  border-radius: 3px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 6;
+  animation: sideRodReciprocate 0.9s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes sideRodReciprocate {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-7px) rotate(-3deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(7px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.loco-drive-rod {
+  position: absolute;
+  bottom: 18px;
+  right: 66px;
+  width: 62px;
+  height: 5px;
+  background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 50%, #64748b 100%);
+  border-radius: 2.5px;
+  border: 1px solid #1e293b;
+  z-index: 6;
+  transform-origin: right center;
+  animation: driveRodPumping 0.9s linear infinite;
+}
+
+@keyframes driveRodPumping {
+  0% { transform: rotate(-5deg) translateX(0); }
+  25% { transform: rotate(-14deg) translateX(-4px); }
+  50% { transform: rotate(-5deg) translateX(0); }
+  75% { transform: rotate(4deg) translateX(4px); }
+  100% { transform: rotate(-5deg) translateX(0); }
+}
+
+/* Couplers */
+.connector {
+  position: absolute;
+  right: -18px;
+  bottom: 14px;
+  width: 24px;
+  height: 8px;
+  background: linear-gradient(180deg, #475569, #1e293b);
+  border-radius: 3px;
+  z-index: 4;
+}
+
+.connector::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -3px;
+  width: 12px;
+  height: 14px;
+  background: radial-gradient(circle, #64748b, #0f172a);
+  border-radius: 50%;
+  border: 2px solid #090b0e;
+}
+
+.connector--loco {
+  right: -16px;
+}
+
+/* --------------------------------------------------------------------------
+   B. HEAVY-DUTY FLATBED WAGONS (NFT EXHIBITION CARS)
+   -------------------------------------------------------------------------- */
+.wagon {
+  width: 150px;
+  margin-right: 14px;
+}
+
+.wagon-body {
+  width: 100%;
+  height: 140px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Gallery Picture Lamp Spotlight */
+.wagon-lamp {
+  position: absolute;
+  top: 0;
+  width: 34px;
+  height: 12px;
+  background: linear-gradient(180deg, #d4af37, #997a15);
+  border-radius: 4px 4px 1px 1px;
+  border: 1px solid #5a420b;
+  z-index: 6;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.6);
+}
+
+.lamp-light {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 245, 180, 0.35) 0%, rgba(255, 230, 100, 0.08) 50%, transparent 80%);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Museum-Grade Exhibit Vitrine Frame / Train Compartment - Fills fully with NFT */
+.wagon-frame {
+  width: 100%;
+  height: 130px;
+  background: #14181f;
+  border-radius: 8px 8px 3px 3px;
+  border: 3.5px solid #1a1f29;
+  box-shadow: 
+    inset 0 0 12px rgba(0, 0, 0, 0.65),
+    0 4px 14px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.wagon-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 38%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* NFT Artwork Display - Fills the Compartment Fully */
+.nft-display {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.nft-display img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  image-rendering: pixelated;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+.wagon:hover .nft-display img {
+  transform: scale(1.08);
+}
+
+/* Polished Brass Identification Plaque */
+.wagon-plaque {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #f9e79f 0%, #d4ac0d 50%, #997a15 100%);
+  border: 1px solid #5a420b;
+  border-radius: 3px;
+  padding: 1.5px 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+  z-index: 6;
+  white-space: nowrap;
+}
+
+.wagon-plaque span {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 900;
+  color: #1a120b;
+  letter-spacing: 0.8px;
+}
+
+/* Industrial Steel Flatcar Chassis & Reporting Marks */
+.wagon-chassis {
+  width: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+.chassis-beam {
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(180deg, #3d4655 0%, #252b36 40%, #151921 100%);
+  border-radius: 2px;
+  border: 1.5px solid #090c10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chassis-beam span {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1.5px;
+}
+
+/* Dual 2-Axle Bogie Trucks with Flanged Steel Wheels */
+.bogie-truck {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.bogie-truck--left { left: 10px; }
+.bogie-truck--right { right: 10px; }
+
+.bogie-wheel {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #333d4b 0%, #171b22 65%, #64748b 88%, #090b0e 100%);
+  border: 2px solid #090c10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 3px rgba(255, 255, 255, 0.25);
+  animation: wheelSpin 0.65s linear infinite;
+  position: relative;
+}
+
+.bogie-wheel::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  background: radial-gradient(circle, #cbd5e1, #475569);
+  border-radius: 50%;
+  border: 1px solid #1e293b;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .train-scene { height: 260px; }
+  .scenic-hills { height: 80px; }
+  .feather-tree { transform: scale(0.75); }
+  .locomotive { width: 175px; transform: scale(0.85); transform-origin: bottom left; }
+  .wagon { width: 120px; transform: scale(0.85); transform-origin: bottom left; }
+}
+
 
 /* ===== ABOUT SECTION ===== */
 .about {
@@ -877,15 +1886,15 @@ header {
   gap: 8px;
   padding: 8px 18px;
   border-radius: 999px;
-  background: rgba(0, 240, 160, 0.08);
-  border: 1px solid rgba(0, 240, 160, 0.2);
-  color: rgba(0, 240, 160, 0.85);
+  background: rgba(21, 128, 61, 0.1);
+  border: 1.5px solid rgba(21, 128, 61, 0.35);
+  color: var(--neon-green);
   font-family: var(--font-body);
   font-weight: 800;
   font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  box-shadow: 0 4px 20px rgba(0, 240, 160, 0.06);
+  box-shadow: 0 4px 16px rgba(21, 128, 61, 0.08);
 }
 
 .section-badge svg {
@@ -900,18 +1909,18 @@ header {
   font-family: var(--font-display);
   font-size: clamp(28px, 4.5vw, 48px);
   font-weight: 800;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1.25;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
 }
 
 .section-title .highlight {
-  background: linear-gradient(90deg, #a0ffd0, #00f0a0, #00e5ff);
+  background: linear-gradient(90deg, #15803d, #087f8c, #0284c7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 30px rgba(0, 240, 160, 0.25));
+  filter: drop-shadow(0 2px 10px rgba(8, 127, 140, 0.2));
 }
 
 .section-desc {
@@ -925,12 +1934,12 @@ header {
 
 .section-desc strong {
   color: var(--neon-green);
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .section-desc .white {
-  color: #fff;
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: 800;
 }
 
 /* Stat cards */
@@ -954,47 +1963,52 @@ header {
   gap: 8px;
   padding: 28px 16px;
   border-radius: 18px;
-  border: 1px solid;
-  transition: transform 0.3s ease;
+  border: 1.5px solid rgba(28, 35, 64, 0.15);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(28, 35, 64, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
   transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(28, 35, 64, 0.1);
 }
 
-.stat-card--green {
-  border-color: rgba(0, 240, 160, 0.2);
-  background: rgba(0, 240, 160, 0.04);
-  box-shadow: 0 8px 30px rgba(0, 240, 160, 0.06);
+.stat-card--green, .stat-card--mint {
+  border-color: rgba(21, 128, 61, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 24px rgba(21, 128, 61, 0.08);
 }
 
-.stat-card--purple {
-  border-color: rgba(180, 77, 255, 0.2);
-  background: rgba(180, 77, 255, 0.04);
-  box-shadow: 0 8px 30px rgba(180, 77, 255, 0.06);
+.stat-card--purple, .stat-card--lilac {
+  border-color: rgba(109, 40, 217, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 24px rgba(109, 40, 217, 0.08);
 }
 
-.stat-card--cyan {
-  border-color: rgba(0, 229, 255, 0.2);
-  background: rgba(0, 229, 255, 0.04);
-  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.06);
+.stat-card--cyan, .stat-card--butter {
+  border-color: rgba(2, 132, 199, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 24px rgba(2, 132, 199, 0.08);
 }
 
 .stat-card__icon {
-  opacity: 0.75;
-  transition: opacity 0.3s ease;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .stat-card:hover .stat-card__icon {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .stat-card__icon svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
-.stat-card--butter .stat-card__icon, .stat-card--cyan .stat-card__icon, .stat-card--green .stat-card__icon { color: var(--cyan); }
+.stat-card--butter .stat-card__icon, .stat-card--cyan .stat-card__icon, .stat-card--green .stat-card__icon { color: #0284c7; }
 .stat-card--lilac .stat-card__icon, .stat-card--purple .stat-card__icon { color: var(--lilac); }
 .stat-card--mint .stat-card__icon { color: var(--mint); }
 
@@ -1005,7 +2019,7 @@ header {
   letter-spacing: 1px;
 }
 
-.stat-card--butter .stat-card__value, .stat-card--cyan .stat-card__value, .stat-card--green .stat-card__value { color: var(--cyan); }
+.stat-card--butter .stat-card__value, .stat-card--cyan .stat-card__value, .stat-card--green .stat-card__value { color: #0284c7; }
 .stat-card--lilac .stat-card__value, .stat-card--purple .stat-card__value { color: var(--lilac); }
 .stat-card--mint .stat-card__value { color: var(--mint); }
 
@@ -1035,22 +2049,26 @@ header {
   position: relative;
   padding: 24px;
   border-radius: 18px;
-  border: 1px solid var(--border);
-  background: rgba(30, 33, 48, 0.7);
+  border: 1.5px solid rgba(28, 35, 64, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(28, 35, 64, 0.05);
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .info-card:hover {
-  border-color: var(--border-hover);
-  background: var(--obsidian-card);
+  border-color: rgba(8, 127, 140, 0.45);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 32px rgba(8, 127, 140, 0.12);
+  transform: translateY(-2px);
 }
 
 .info-card__glow {
   position: absolute;
   inset: 0;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(0, 240, 160, 0.03), transparent);
+  background: linear-gradient(135deg, rgba(8, 127, 140, 0.06), transparent);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -1072,8 +2090,8 @@ header {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--obsidian-light);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(28, 35, 64, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1081,39 +2099,41 @@ header {
   color: var(--cyan);
   flex-shrink: 0;
   transition: all 0.3s ease;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(28, 35, 64, 0.08);
 }
 
 .info-card__icon-box svg {
   width: 22px;
   height: 22px;
   color: var(--cyan);
-  stroke-width: 2;
+  stroke-width: 2.2;
 }
 
 .info-card:hover .info-card__emoji,
 .info-card:hover .info-card__icon-box {
-  border-color: rgba(0, 240, 255, 0.4);
-  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--cyan);
+  background: rgba(8, 127, 140, 0.1);
+  transform: scale(1.05);
 }
 
 .info-card__title {
   font-family: var(--font-pixel);
-  font-size: 11px;
+  font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 8px;
   transition: color 0.2s ease;
 }
 
 .info-card:hover .info-card__title {
-  color: var(--neon-green);
+  color: var(--cyan);
 }
 
 .info-card__desc {
   color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.6;
+  font-weight: 600;
 }
 
 /* ===== COLLECTION GALLERY ===== */
@@ -1263,7 +2283,7 @@ header {
   font-family: var(--font-display);
   font-size: 22px;
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -1278,8 +2298,8 @@ footer {
   position: relative;
   z-index: 10;
   width: 100%;
-  border-top: 1px solid var(--border);
-  background: rgba(26, 29, 40, 0.4);
+  border-top: 1.5px solid rgba(28, 35, 64, 0.12);
+  background: rgba(220, 227, 192, 0.7);
   padding: 32px 24px;
 }
 
@@ -1317,7 +2337,7 @@ footer {
   font-family: var(--font-display);
   font-size: 20px;
   letter-spacing: 1px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .footer-copy {
@@ -1343,15 +2363,15 @@ footer {
   color: var(--text-muted);
   padding: 6px 14px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(28, 35, 64, 0.15);
+  background: rgba(255, 255, 255, 0.4);
   transition: all 0.2s ease;
 }
 
 .footer-admin-link:hover {
   color: var(--neon-cyan) !important;
-  border-color: rgba(0, 229, 255, 0.35);
-  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(8, 127, 140, 0.4);
+  background: rgba(8, 127, 140, 0.08);
   transform: translateY(-1px);
 }
 
@@ -1475,7 +2495,7 @@ footer {
 .crew-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(5, 6, 12, 0.82);
+  background: rgba(229, 236, 203, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1;
@@ -1500,7 +2520,7 @@ footer {
   height: 38px;
   border-radius: 10px;
   border: 2px solid var(--ink);
-  background: var(--cyan);
+  background: var(--butter);
   color: var(--ink);
   cursor: pointer;
   display: flex;
@@ -1926,7 +2946,7 @@ footer {
 .card-title {
   font-family: var(--font-display);
   font-size: clamp(24px, 4.5vw, 32px);
-  color: var(--text-primary);
+  color: #f4efe2;
   margin-bottom: 6px;
   letter-spacing: 0.02em;
 }
@@ -1934,7 +2954,7 @@ footer {
 .card-subtitle {
   font-family: var(--font-body);
   font-size: 13.5px;
-  color: var(--text-secondary);
+  color: #c5cee0;
   line-height: 1.5;
 }
 
@@ -1948,7 +2968,7 @@ footer {
 
 .quest-task-card {
   background: #101424;
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 14px 16px;
   transition: all 0.2s ease;
@@ -1984,8 +3004,8 @@ footer {
   font-size: 10px;
   font-weight: 900;
   background: rgba(0, 240, 255, 0.16);
-  color: var(--cyan);
-  border: 1px solid var(--cyan);
+  color: #6bf6ff;
+  border: 1px solid #00f0ff;
   padding: 2px 8px;
   border-radius: 999px;
   letter-spacing: 0.5px;
@@ -1996,7 +3016,7 @@ footer {
   font-family: var(--font-body);
   font-size: 13.5px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #f4efe2;
   margin: 0;
   line-height: 1.3;
 }
@@ -2154,9 +3174,9 @@ footer {
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   background: #070912;
-  color: var(--text-primary);
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 700;
@@ -2165,7 +3185,7 @@ footer {
 }
 
 .form-input::placeholder {
-  color: var(--text-muted);
+  color: #8fa0c0;
   font-weight: 600;
 }
 
