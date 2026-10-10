@@ -1,6 +1,8 @@
 /**
- * Homies — Shared Data Layer (localStorage-based)
- * Manages tasks, applications, and settings for whitelist system.
+ * Homies — Shared Data Layer with MongoDB Cloud Persistence
+ * Manages tasks, applications, and settings for whitelist system with
+ * real-time server synchronisation, multi-tab BroadcastChannel, and
+ * instant local-first fallback.
  */
 
 const HomiesDB = (() => {
@@ -10,7 +12,7 @@ const HomiesDB = (() => {
     settings: 'homies_settings',
   };
 
-  // ── Default Data ─────────────────────────────────────────
+  // ── Default Seed Data ─────────────────────────────────────
   const DEFAULT_TASKS = [
     {
       id: 't1',
@@ -45,6 +47,7 @@ const HomiesDB = (() => {
     paused: false,
     whitelistTitle: 'Homies Whitelist Quests',
     whitelistSubtitle: 'Complete the quests and enter proof details to reserve your spot in the crew.',
+    adminPIN: 'homies2026',
   };
 
   // ── Helpers ──────────────────────────────────────────────
@@ -52,32 +55,106 @@ const HomiesDB = (() => {
     try {
       const raw = localStorage.getItem(key);
       return raw ? JSON.parse(raw) : fallback;
-    } catch { return fallback; }
+    } catch {
+      return fallback;
+    }
   }
 
   function set(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      console.warn('[HomiesDB LocalStorage Write Error]', e);
+    }
   }
 
   function uid() {
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   }
 
+  // ── Multi-Tab Real-Time Broadcast ─────────────────────────
+  const broadcastChannel = typeof window !== 'undefined' && 'BroadcastChannel' in window
+    ? new BroadcastChannel('homies_db_channel')
+    : null;
+
+  if (broadcastChannel) {
+    broadcastChannel.onmessage = (event) => {
+      if (event.data && event.data.type === 'db_update') {
+        if (event.data.tasks) set(KEYS.tasks, event.data.tasks);
+        if (event.data.settings) set(KEYS.settings, event.data.settings);
+        if (event.data.applications) set(KEYS.applications, event.data.applications);
+        
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('homies-db-updated', { detail: event.data }));
+        }
+      }
+    };
+  }
+
+  // Cross-tab storage fallback
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', (e) => {
+      if (e.key && e.key.startsWith('homies_')) {
+        window.dispatchEvent(new CustomEvent('homies-db-updated', { detail: { origin: 'storage_event' } }));
+      }
+    });
+  }
+
+  function notifyUpdated(meta = {}) {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('homies-db-updated', { detail: meta }));
+    }
+    if (broadcastChannel) {
+      try {
+        broadcastChannel.postMessage({
+          type: 'db_update',
+          tasks: getTasks(),
+          settings: getSettings(),
+          applications: getApplications(),
+          timestamp: Date.now(),
+          ...meta,
+        });
+      } catch (err) {
+        console.warn('[HomiesDB Broadcast Error]', err);
+      }
+    }
+  }
+
+  function onUpdate(callback) {
+    if (typeof window !== 'undefined' && typeof callback === 'function') {
+      window.addEventListener('homies-db-updated', callback);
+    }
+  }
+
   // ── Tasks ────────────────────────────────────────────────
   function getTasks() {
     const tasks = get(KEYS.tasks, null);
-    if (!tasks) { set(KEYS.tasks, DEFAULT_TASKS); return [...DEFAULT_TASKS]; }
+    if (!tasks) {
+      set(KEYS.tasks, DEFAULT_TASKS);
+      return [...DEFAULT_TASKS];
+    }
     return tasks.sort((a, b) => a.order - b.order);
   }
 
-  function setTasks(tasks) { set(KEYS.tasks, tasks); }
+  function setTasks(tasks) {
+    set(KEYS.tasks, tasks);
+    notifyUpdated({ source: 'setTasks' });
+  }
 
   function addTask(task) {
     const tasks = getTasks();
-    task.id = uid();
+    task.id = task.id || uid();
     task.order = tasks.length + 1;
     tasks.push(task);
     setTasks(tasks);
+
+    // Persist to MongoDB backend
+    fetch('/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(task),
+    }).catch(err => console.warn('[MongoDB Task Create]', err));
+
     return task;
   }
 
@@ -87,6 +164,14 @@ const HomiesDB = (() => {
     if (idx === -1) return null;
     tasks[idx] = { ...tasks[idx], ...updates };
     setTasks(tasks);
+
+    // Persist to MongoDB backend
+    fetch(`/api/tasks/${encodeURIComponent(id)}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    }).catch(err => console.warn('[MongoDB Task Update]', err));
+
     return tasks[idx];
   }
 
@@ -94,90 +179,13 @@ const HomiesDB = (() => {
     let tasks = getTasks().filter(t => t.id !== id);
     tasks.forEach((t, i) => t.order = i + 1);
     setTasks(tasks);
+
+    // Persist to MongoDB backend
+    fetch(`/api/tasks/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    }).catch(err => console.warn('[MongoDB Task Delete]', err));
   }
 
-  // ── Applications ─────────────────────────────────────────
-  function getApplications() {
-    return get(KEYS.applications, []);
-  }
-
-  function addApplication(app) {
-    const apps = getApplications();
-    app.id = uid();
-    app.timestamp = new Date().toISOString();
-    app.status = 'pending';
-    apps.push(app);
-    set(KEYS.applications, apps);
-    return app;
-  }
-
-  function updateApplicationStatus(id, status) {
-    const apps = getApplications();
-    const idx = apps.findIndex(a => a.id === id);
-    if (idx === -1) return null;
-    apps[idx].status = status;
-    apps[idx].reviewedAt = new Date().toISOString();
-    set(KEYS.applications, apps);
-    return apps[idx];
-  }
-
-  function deleteApplication(id) {
-    const apps = getApplications().filter(a => a.id !== id);
-    set(KEYS.applications, apps);
-  }
-
-  function clearApplications() {
-    set(KEYS.applications, []);
-  }
-
-  // ── Settings ─────────────────────────────────────────────
-  function getSettings() {
-    return get(KEYS.settings, { ...DEFAULT_SETTINGS });
-  }
-
-  function updateSettings(updates) {
-    const settings = getSettings();
-    Object.assign(settings, updates);
-    set(KEYS.settings, settings);
-    return settings;
-  }
-
-  // ── Export / Import ──────────────────────────────────────
-  function exportAll() {
-    return {
-      tasks: getTasks(),
-      applications: getApplications(),
-      settings: getSettings(),
-      exportedAt: new Date().toISOString(),
-    };
-  }
-
-  function importAll(data) {
-    if (data.tasks) setTasks(data.tasks);
-    if (data.applications) set(KEYS.applications, data.applications);
-    if (data.settings) set(KEYS.settings, data.settings);
-  }
-
-  function exportCSV() {
-    const apps = getApplications();
-    const tasks = getTasks();
-    if (apps.length === 0) return '';
-
-    const headers = ['ID', 'Status', 'Submitted', 'Reviewed'];
-    tasks.forEach(t => headers.push(t.title));
-
-    const rows = apps.map(app => {
-      const row = [app.id, app.status, app.timestamp, app.reviewedAt || ''];
-      tasks.forEach(t => {
-        row.push(app.proofs?.[t.id] || '');
-      });
-      return row.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
-    });
-
-    return [headers.map(h => `"${h}"`).join(','), ...rows].join('\n');
-  }
-
-  // ── Task Reordering ──────────────────────────────────────
   function moveTask(id, direction) {
     const tasks = getTasks();
     const idx = tasks.findIndex(t => t.id === id);
@@ -193,10 +201,87 @@ const HomiesDB = (() => {
     }
     tasks.forEach((t, i) => t.order = i + 1);
     setTasks(tasks);
+
+    // Persist reorder to MongoDB backend
+    fetch('/api/tasks-reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tasks }),
+    }).catch(err => console.warn('[MongoDB Tasks Reorder]', err));
+
     return tasks;
   }
 
-  // ── Bulk Application Actions ─────────────────────────────
+  // ── Applications ─────────────────────────────────────────
+  function getApplications() {
+    return get(KEYS.applications, []);
+  }
+
+  function addApplication(app) {
+    const apps = getApplications();
+    app.id = app.id || uid();
+    app.timestamp = app.timestamp || new Date().toISOString();
+    app.status = app.status || 'pending';
+    app.proofs = app.proofs || {};
+    apps.unshift(app);
+    set(KEYS.applications, apps);
+    notifyUpdated({ source: 'addApplication', appId: app.id });
+
+    // Persist to MongoDB backend
+    fetch('/api/applications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(app),
+    }).catch(err => console.warn('[MongoDB Application Create]', err));
+
+    return app;
+  }
+
+  function updateApplicationStatus(id, status) {
+    const apps = getApplications();
+    const idx = apps.findIndex(a => a.id === id);
+    if (idx === -1) return null;
+    apps[idx].status = status;
+    apps[idx].reviewedAt = new Date().toISOString();
+    set(KEYS.applications, apps);
+    notifyUpdated({ source: 'updateApplicationStatus', appId: id, status });
+
+    // Persist to MongoDB backend
+    fetch(`/api/applications/${encodeURIComponent(id)}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    }).catch(err => console.warn('[MongoDB Application Status]', err));
+
+    return apps[idx];
+  }
+
+  function deleteApplication(id) {
+    const apps = getApplications().filter(a => a.id !== id);
+    set(KEYS.applications, apps);
+    notifyUpdated({ source: 'deleteApplication', appId: id });
+
+    // Persist to MongoDB backend
+    fetch(`/api/applications/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    }).catch(err => console.warn('[MongoDB Application Delete]', err));
+  }
+
+  function clearApplications() {
+    const apps = getApplications();
+    const ids = apps.map(a => a.id);
+    set(KEYS.applications, []);
+    notifyUpdated({ source: 'clearApplications' });
+
+    if (ids.length > 0) {
+      fetch('/api/applications/bulk-delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids }),
+      }).catch(err => console.warn('[MongoDB Clear Applications]', err));
+    }
+  }
+
   function bulkUpdateStatus(ids, status) {
     const apps = getApplications();
     const idSet = new Set(ids);
@@ -208,6 +293,15 @@ const HomiesDB = (() => {
       }
     });
     set(KEYS.applications, apps);
+    notifyUpdated({ source: 'bulkUpdateStatus', ids, status });
+
+    // Persist to MongoDB backend
+    fetch('/api/applications/bulk-status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids, status }),
+    }).catch(err => console.warn('[MongoDB Bulk Status]', err));
+
     return apps;
   }
 
@@ -215,7 +309,151 @@ const HomiesDB = (() => {
     const idSet = new Set(ids);
     const apps = getApplications().filter(a => !idSet.has(a.id));
     set(KEYS.applications, apps);
+    notifyUpdated({ source: 'bulkDeleteApplications', ids });
+
+    // Persist to MongoDB backend
+    fetch('/api/applications/bulk-delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids }),
+    }).catch(err => console.warn('[MongoDB Bulk Delete]', err));
+
     return apps;
+  }
+
+  // ── Settings ─────────────────────────────────────────────
+  function getSettings() {
+    return get(KEYS.settings, { ...DEFAULT_SETTINGS });
+  }
+
+  function updateSettings(updates) {
+    const settings = getSettings();
+    Object.assign(settings, updates);
+    set(KEYS.settings, settings);
+    notifyUpdated({ source: 'updateSettings', updates });
+
+    // Persist to MongoDB backend
+    fetch('/api/settings', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    }).catch(err => console.warn('[MongoDB Settings Update]', err));
+
+    return settings;
+  }
+
+  // ── Server Sync with MongoDB ──────────────────────────────
+  let isSyncing = false;
+  async function syncWithServer(callback) {
+    if (isSyncing) return;
+    isSyncing = true;
+    try {
+      const [tasksRes, settingsRes, appsRes] = await Promise.all([
+        fetch('/api/tasks'),
+        fetch('/api/settings'),
+        fetch('/api/applications'),
+      ]);
+
+      let hasChanges = false;
+
+      if (tasksRes.ok) {
+        const tasks = await tasksRes.json();
+        if (Array.isArray(tasks) && tasks.length > 0) {
+          const currentStr = JSON.stringify(get(KEYS.tasks, []));
+          const newStr = JSON.stringify(tasks);
+          if (currentStr !== newStr) {
+            set(KEYS.tasks, tasks);
+            hasChanges = true;
+          }
+        }
+      }
+
+      if (settingsRes.ok) {
+        const settings = await settingsRes.json();
+        if (settings && typeof settings === 'object') {
+          const currentStr = JSON.stringify(get(KEYS.settings, {}));
+          const newStr = JSON.stringify(settings);
+          if (currentStr !== newStr) {
+            set(KEYS.settings, settings);
+            hasChanges = true;
+          }
+        }
+      }
+
+      if (appsRes.ok) {
+        const apps = await appsRes.json();
+        if (Array.isArray(apps)) {
+          const currentStr = JSON.stringify(get(KEYS.applications, []));
+          const newStr = JSON.stringify(apps);
+          if (currentStr !== newStr) {
+            set(KEYS.applications, apps);
+            hasChanges = true;
+          }
+        }
+      }
+
+      if (hasChanges) {
+        notifyUpdated({ source: 'serverSync' });
+      }
+
+      if (typeof callback === 'function') callback();
+    } catch (err) {
+      console.debug('[HomiesDB] Server sync deferred:', err.message);
+    } finally {
+      isSyncing = false;
+    }
+  }
+
+  // ── Export / Import ──────────────────────────────────────
+  function exportAll() {
+    return {
+      tasks: getTasks(),
+      applications: getApplications(),
+      settings: getSettings(),
+      version: '2.0.0',
+      exportedAt: new Date().toISOString(),
+    };
+  }
+
+  function importAll(data) {
+    if (!data || typeof data !== 'object') return false;
+    if (Array.isArray(data.tasks)) {
+      set(KEYS.tasks, data.tasks);
+      fetch('/api/tasks-reorder', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tasks: data.tasks }),
+      }).catch(() => {});
+    }
+    if (Array.isArray(data.applications)) {
+      set(KEYS.applications, data.applications);
+    }
+    if (data.settings && typeof data.settings === 'object') {
+      set(KEYS.settings, data.settings);
+      fetch('/api/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data.settings),
+      }).catch(() => {});
+    }
+    notifyUpdated({ source: 'importAll' });
+    return true;
+  }
+
+  function exportCSV() {
+    const apps = getApplications();
+    const tasks = getTasks();
+    const headers = ['ID', 'Status', 'Submitted At', 'Reviewed At', ...tasks.map(t => t.title)];
+
+    const rows = apps.map(app => {
+      const row = [app.id, app.status, app.timestamp, app.reviewedAt || ''];
+      tasks.forEach(t => {
+        row.push(app.proofs?.[t.id] || '');
+      });
+      return row.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+    });
+
+    return [headers.map(h => `"${h}"`).join(','), ...rows].join('\n');
   }
 
   // ── Approved Wallets Extractor ───────────────────────────
@@ -231,7 +469,6 @@ const HomiesDB = (() => {
       if (walletTaskId && a.proofs?.[walletTaskId]) {
         w = a.proofs[walletTaskId].trim();
       } else if (a.proofs) {
-        // Fallback: look for any proof matching 0x pattern
         for (const key of Object.keys(a.proofs)) {
           const val = String(a.proofs[key]).trim();
           if (/^0x[a-fA-F0-9]{40}$/.test(val)) {
@@ -256,7 +493,6 @@ const HomiesDB = (() => {
     const lines = csvText.trim().split(/\r?\n/);
     if (lines.length < 2) return { success: false, message: 'CSV has no data rows' };
 
-    // Simple CSV line parser supporting quoted strings
     function parseCSVLine(line) {
       const result = [];
       let cur = '';
@@ -298,11 +534,9 @@ const HomiesDB = (() => {
         proofs: {},
       };
 
-      // Map subsequent headers to tasks if titles match or by index
       for (let h = 4; h < headers.length; h++) {
         const headerName = headers[h];
         const val = values[h] || '';
-        // Find matching task by title
         const matchedTask = tasks.find(t => t.title.toLowerCase() === headerName.toLowerCase());
         if (matchedTask) {
           app.proofs[matchedTask.id] = val;
@@ -311,7 +545,6 @@ const HomiesDB = (() => {
         }
       }
 
-      // Avoid exact ID collision
       const existingIdx = apps.findIndex(a => a.id === app.id);
       if (existingIdx >= 0) {
         apps[existingIdx] = app;
@@ -319,9 +552,17 @@ const HomiesDB = (() => {
         apps.push(app);
       }
       importedCount++;
+
+      // Post to backend
+      fetch('/api/applications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(app),
+      }).catch(() => {});
     }
 
     set(KEYS.applications, apps);
+    notifyUpdated({ source: 'importCSV' });
     return { success: true, count: importedCount };
   }
 
@@ -348,6 +589,7 @@ const HomiesDB = (() => {
         id: uid(),
         status: 'pending',
         timestamp: new Date(Date.now() - 3600000 * 18).toISOString(),
+        reviewedAt: null,
         proofs: {
           [t1]: '@pixel_homie99',
           [t2]: 'https://x.com/pixel_homie99/status/178948291048201',
@@ -358,37 +600,16 @@ const HomiesDB = (() => {
         id: uid(),
         status: 'pending',
         timestamp: new Date(Date.now() - 3600000 * 6).toISOString(),
+        reviewedAt: null,
         proofs: {
           [t1]: '@degen_collector',
           [t2]: 'https://x.com/degen_collector/status/178950182740192',
           [t3]: '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
         },
       },
-      {
-        id: uid(),
-        status: 'approved',
-        timestamp: new Date(Date.now() - 3600000 * 12).toISOString(),
-        reviewedAt: new Date(Date.now() - 3600000 * 1).toISOString(),
-        proofs: {
-          [t1]: '@web3_samurai',
-          [t2]: 'https://x.com/web3_samurai/status/178944771239918',
-          [t3]: '0x90F79bf6EB2c4f870365E785982E1f101E93b906',
-        },
-      },
-      {
-        id: uid(),
-        status: 'rejected',
-        timestamp: new Date(Date.now() - 3600000 * 48).toISOString(),
-        reviewedAt: new Date(Date.now() - 3600000 * 20).toISOString(),
-        proofs: {
-          [t1]: '@spam_bot_fake',
-          [t2]: 'invalid link',
-          [t3]: '0x0000000000000000000000000000000000000000',
-        },
-      },
     ];
 
-    set(KEYS.applications, samples);
+    samples.forEach(s => addApplication(s));
     return samples;
   }
 
@@ -410,6 +631,9 @@ const HomiesDB = (() => {
   function resetToDefaults() {
     set(KEYS.tasks, DEFAULT_TASKS);
     set(KEYS.settings, DEFAULT_SETTINGS);
+    notifyUpdated({ source: 'resetToDefaults' });
+
+    fetch('/api/reset-defaults', { method: 'POST' }).catch(() => {});
     return { tasks: DEFAULT_TASKS, settings: DEFAULT_SETTINGS };
   }
 
@@ -426,6 +650,17 @@ const HomiesDB = (() => {
     return { question: `${a} ${op.sym} ${b} = ?`, answer: op.fn(a, b) };
   }
 
+  // ── Real-Time Auto Sync Setup ─────────────────────────────
+  if (typeof window !== 'undefined') {
+    // Initial sync immediately
+    syncWithServer();
+    
+    // Background polling every 4 seconds to catch updates from other devices/admins
+    setInterval(() => {
+      syncWithServer();
+    }, 4000);
+  }
+
   return {
     getTasks, setTasks, addTask, updateTask, deleteTask, moveTask,
     getApplications, addApplication, updateApplicationStatus, deleteApplication, clearApplications,
@@ -435,6 +670,9 @@ const HomiesDB = (() => {
     seedSampleApplications,
     verifyPIN, setPIN, resetToDefaults,
     generateCaptcha,
+    syncWithServer,
+    onUpdate,
+    notifyUpdated,
   };
 })();
 
@@ -442,5 +680,3 @@ const HomiesDB = (() => {
 if (typeof window !== 'undefined') window.HomiesDB = HomiesDB;
 if (typeof global !== 'undefined') global.HomiesDB = HomiesDB;
 if (typeof module !== 'undefined' && module.exports) module.exports = HomiesDB;
-
-

@@ -1,5 +1,5 @@
 /* ===== FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;800;900&family=Press+Start+2P&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Courier+Prime:wght@400;700&family=Nunito:wght@700;800;900&display=swap');
 
 /* ===== CSS RESET & VARIABLES ===== */
 *, *::before, *::after {
@@ -132,38 +132,56 @@ img {
   display: inline-flex;
   align-items: baseline;
   justify-content: center;
+  gap: clamp(2px, 0.8vw, 8px);
   font-family: 'Chewy', cursive, sans-serif;
-  font-size: clamp(68px, 16vw, 140px);
+  font-size: clamp(64px, 15vw, 136px);
   line-height: 0.95;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 
-    0 4px 0 rgba(28, 35, 64, 0.35),
-    0 12px 36px rgba(0, 0, 0, 0.7);
-  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5));
+  user-select: none;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.7));
 }
 
 .intro-letter {
   display: inline-block;
   transform-origin: 50% 85%;
+  -webkit-text-stroke: clamp(2px, 0.4vw, 4px) #1c2340;
+  paint-order: stroke fill;
+  text-shadow: 
+    0 6px 0 #1c2340,
+    0 10px 0 rgba(10, 14, 28, 0.9),
+    0 16px 28px rgba(0, 0, 0, 0.8);
   animation: 
-    letterDropIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.08s) both,
-    letterFloatWave 3s ease-in-out calc(0.8s + var(--i) * 0.16s) infinite;
+    letterDropIn 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.09s) both,
+    letterFloatWave 2.8s ease-in-out calc(0.85s + var(--i) * 0.18s) infinite;
   will-change: transform, opacity;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+}
+
+/* Individual letter candy palette matching Fomies visual language */
+.intro-letter:nth-child(1) { color: #ffd84d; } /* H - Butter yellow */
+.intro-letter:nth-child(2) { color: #a4ecc8; } /* O - Mint green */
+.intro-letter:nth-child(3) { color: #00e5ff; } /* M - Cyan blue */
+.intro-letter:nth-child(4) { color: #ffb3a3; } /* I - Coral */
+.intro-letter:nth-child(5) { color: #b44dff; } /* E - Purple */
+.intro-letter:nth-child(6) { color: #ffd84d; } /* S - Butter yellow */
+
+.intro-letter:hover {
+  transform: translateY(-16px) scale(1.18) rotate(calc((var(--i) - 2.5) * 4deg)) !important;
 }
 
 @keyframes letterDropIn {
   0% {
     opacity: 0;
-    transform: translateY(48px) scale(0.6) rotate(calc((var(--i) - 2.5) * -6deg));
+    transform: translateY(60px) scale(0.5) rotate(calc((var(--i) - 2.5) * -8deg));
   }
   65% {
     opacity: 1;
-    transform: translateY(-16px) scale(1.14) rotate(calc((var(--i) - 2.5) * 3deg));
+    transform: translateY(-20px) scale(1.16) rotate(calc((var(--i) - 2.5) * 4deg));
   }
   85% {
-    transform: translateY(4px) scale(0.96) rotate(calc((var(--i) - 2.5) * -1deg));
+    transform: translateY(4px) scale(0.96) rotate(calc((var(--i) - 2.5) * -1.5deg));
   }
   100% {
     opacity: 1;
@@ -176,18 +194,18 @@ img {
     transform: translateY(0) rotate(0deg) scale(1);
   }
   25% {
-    transform: translateY(-12px) rotate(calc((var(--i) % 2 == 0 ? -3deg : 3deg))) scale(1.03, 0.97);
+    transform: translateY(-12px) rotate(calc((var(--i) % 2 === 0 ? -3deg : 3deg))) scale(1.04, 0.96);
   }
   50% {
-    transform: translateY(-3px) rotate(0deg) scale(0.98, 1.02);
+    transform: translateY(-2px) rotate(0deg) scale(0.98, 1.02);
   }
   75% {
-    transform: translateY(7px) rotate(calc((var(--i) % 2 == 0 ? 2deg : -2deg))) scale(1.02, 0.98);
+    transform: translateY(8px) rotate(calc((var(--i) % 2 === 0 ? 2deg : -2deg))) scale(1.02, 0.98);
   }
 }
 
 .intro-brand-wrap:hover .intro-letter {
-  animation-duration: 0.8s, 1.6s;
+  animation-duration: 0.85s, 1.8s;
 }
 
 #intro-enter {

@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;800;900&family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Courier+Prime:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -182,7 +182,7 @@
                 <path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>
               </svg>
             </div>
-            <span class="stat-card__value">5,555</span>
+            <span class="stat-card__value">2,000</span>
             <span class="stat-card__label">Homies</span>
           </div>
           <div class="stat-card stat-card--purple">
@@ -652,13 +652,30 @@
         success.classList.add('show');
       });
 
-      // Initial header badge sync on page load
-      const initSettings = HomiesDB.getSettings();
-      const headerStatusBadge = document.getElementById('status-badge');
-      if (headerStatusBadge && initSettings.paused) {
-        headerStatusBadge.classList.add('status-badge--paused');
-        headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
+      function syncUIWithSettings() {
+        const settings = HomiesDB.getSettings();
+        const headerStatusBadge = document.getElementById('status-badge');
+        if (headerStatusBadge) {
+          if (settings.paused) {
+            headerStatusBadge.classList.add('status-badge--paused');
+            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
+          } else {
+            headerStatusBadge.classList.remove('status-badge--paused');
+            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW OPEN';
+          }
+        }
+        if (overlay && overlay.classList.contains('open')) {
+          renderTasks();
+        }
       }
+
+      // Initial header badge sync on page load
+      syncUIWithSettings();
+
+      // Listen for instant real-time updates from HomiesDB / Admin Panel / MongoDB
+      window.addEventListener('homies-db-updated', () => {
+        syncUIWithSettings();
+      });
     })();
   </script>
 

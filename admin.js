@@ -876,7 +876,22 @@ document.addEventListener('DOMContentLoaded', () => {
     renderApplications();
     renderTasks();
     loadSettings();
+    updateStatusDisplay();
   }
+
+  // ── Real-Time DB Update Listener ──────────────────────────
+  window.addEventListener('homies-db-updated', () => {
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+      renderStats();
+      updateStatusDisplay();
+      renderApplications();
+      // Only re-render tasks if modal is not open
+      const taskModal = document.getElementById('task-modal');
+      if (!taskModal || !taskModal.classList.contains('open')) {
+        renderTasks();
+      }
+    }
+  });
 
   // Start check
   checkAuth();

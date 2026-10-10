@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homies Admin — Mission Control</title>
   <meta name="description" content="Homies Whitelist & Tasks Mission Control Admin Panel" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Courier+Prime:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
@@ -51,6 +54,12 @@
       </div>
 
       <div class="admin-header__actions">
+        <!-- MongoDB Live Status -->
+        <div class="db-status-badge" id="header-db-status" title="Cloud Database Connection Status">
+          <span class="db-status-dot"></span>
+          <span class="db-status-text">DATABASE LIVE</span>
+        </div>
+
         <!-- Quick Open / Paused Status Toggle -->
         <div class="wl-status-toggle open" id="header-status-toggle" title="Click to toggle Open / Paused status">
           <div class="status-dot-wrap">
