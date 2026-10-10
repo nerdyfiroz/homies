@@ -440,26 +440,9 @@ img {
   z-index: 2;
 }
 
-/* Subtle CRT / Cyber NFT scanline bar */
+/* Subtle CRT / Cyber NFT scanline bar (disabled to prevent horizontal line artifacts) */
 .bg-scanline {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 240, 255, 0.02) 50%,
-    transparent 100%
-  );
-  height: 120px;
-  opacity: 0.7;
-  animation: scanlineSweep 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes scanlineSweep {
-  0% { transform: translateY(-120px); }
-  100% { transform: translateY(105vh); }
+  display: none;
 }
 
 /* ===== HEADER ===== */
@@ -786,15 +769,21 @@ header {
 .train-section {
   position: relative;
   z-index: 10;
-  padding: 10px 0 70px 0;
+  padding: 0 0 70px 0;
   overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 .train-scene {
   position: relative;
   width: 100%;
-  height: 330px;
+  height: 350px;
   overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 /* ==========================================================================
@@ -805,6 +794,7 @@ header {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  border: none;
 }
 
 /* Distant rolling hills in soft thematic sage tones */
@@ -837,12 +827,12 @@ header {
   animation: treeBreeze 5.5s ease-in-out infinite alternate;
 }
 
-.tree--1 { left: 4%; height: 240px; animation-delay: 0s; }
-.tree--2 { left: 20%; height: 265px; animation-delay: -1.2s; }
-.tree--3 { left: 38%; height: 235px; animation-delay: -2.5s; }
-.tree--4 { left: 56%; height: 275px; animation-delay: -0.7s; }
-.tree--5 { left: 74%; height: 250px; animation-delay: -3.1s; }
-.tree--6 { left: 91%; height: 245px; animation-delay: -1.8s; }
+.tree--1 { left: 4%; height: 220px; animation-delay: 0s; }
+.tree--2 { left: 20%; height: 245px; animation-delay: -1.2s; }
+.tree--3 { left: 38%; height: 215px; animation-delay: -2.5s; }
+.tree--4 { left: 56%; height: 250px; animation-delay: -0.7s; }
+.tree--5 { left: 74%; height: 235px; animation-delay: -3.1s; }
+.tree--6 { left: 91%; height: 225px; animation-delay: -1.8s; }
 
 @keyframes treeBreeze {
   0% { transform: rotate(0deg); }
@@ -1448,32 +1438,83 @@ header {
   border-radius: 4px;
 }
 
-/* Realistic expanding steam clouds */
+/* Realistic Billowing Locomotive Steam Puffs */
 .smoke-puff {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(245, 245, 250, 0.82) 0%, rgba(200, 205, 215, 0.45) 50%, transparent 80%);
-  filter: blur(2px);
-  animation: realisticSmoke 2.2s ease-out infinite;
+  background: radial-gradient(
+    circle at 42% 38%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.75) 32%,
+    rgba(245, 248, 240, 0.35) 65%,
+    transparent 82%
+  );
+  filter: blur(3.5px);
+  pointer-events: none;
+  animation: realisticSteamPlume 2.4s ease-out infinite;
+  will-change: transform, opacity;
 }
 
-.smoke-puff--1 { width: 22px; height: 22px; top: -28px; left: -2px; animation-delay: 0s; }
-.smoke-puff--2 { width: 30px; height: 30px; top: -46px; left: 8px; animation-delay: 0.45s; }
-.smoke-puff--3 { width: 40px; height: 40px; top: -68px; left: 24px; animation-delay: 0.9s; }
-.smoke-puff--4 { width: 50px; height: 50px; top: -90px; left: 45px; animation-delay: 1.35s; }
-.smoke-puff--5 { width: 64px; height: 64px; top: -115px; left: 70px; animation-delay: 1.8s; }
+.smoke-puff--1 {
+  width: 18px;
+  height: 18px;
+  top: -10px;
+  left: 2px;
+  animation-delay: 0s;
+}
 
-@keyframes realisticSmoke {
+.smoke-puff--2 {
+  width: 24px;
+  height: 24px;
+  top: -12px;
+  left: 2px;
+  animation-delay: 0.48s;
+}
+
+.smoke-puff--3 {
+  width: 32px;
+  height: 32px;
+  top: -14px;
+  left: 2px;
+  animation-delay: 0.96s;
+}
+
+.smoke-puff--4 {
+  width: 42px;
+  height: 42px;
+  top: -16px;
+  left: 2px;
+  animation-delay: 1.44s;
+}
+
+.smoke-puff--5 {
+  width: 52px;
+  height: 52px;
+  top: -18px;
+  left: 2px;
+  animation-delay: 1.92s;
+}
+
+@keyframes realisticSteamPlume {
   0% {
-    opacity: 0.85;
-    transform: translateY(0) translateX(0) scale(0.45);
+    opacity: 0.95;
+    transform: translate(0, 0) scale(0.35) rotate(0deg);
   }
-  40% {
-    opacity: 0.6;
+  25% {
+    opacity: 0.85;
+    transform: translate(22px, -14px) scale(0.8) rotate(15deg);
+  }
+  55% {
+    opacity: 0.55;
+    transform: translate(55px, -28px) scale(1.35) rotate(35deg);
+  }
+  85% {
+    opacity: 0.18;
+    transform: translate(95px, -38px) scale(1.85) rotate(55deg);
   }
   100% {
     opacity: 0;
-    transform: translateY(-80px) translateX(95px) scale(2.4);
+    transform: translate(125px, -45px) scale(2.2) rotate(70deg);
   }
 }
 
