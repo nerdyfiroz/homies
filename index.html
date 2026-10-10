@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homies — Join the Crew</title>
+  <meta name="description" content="Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Homies — Join the Crew" />
+  <meta property="og:description" content="Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Homies NFT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Homies — Join the Crew" />
+  <meta name="twitter:description" content="Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="loader">
+    <div class="loader-bg"></div>
+    <div class="loader-glow loader-glow--green"></div>
+    <div class="loader-glow loader-glow--purple"></div>
+    <div class="loader-content">
+      <div class="loader-avatar">
+        <img src="assets/homie-5.png" alt="Homies Loading" />
+      </div>
+      <h1 class="loader-title">HOMIES</h1>
+      <span class="loader-subtitle">THE CREW AWAITS</span>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-info">
+          <span class="loader-bar-label">
+            <span class="pulse-dot"></span>
+            ASSEMBLING CREW...
+          </span>
+          <span class="loader-bar-pct" id="loader-pct">0%</span>
+        </div>
+        <div class="loader-bar-track">
+          <div class="loader-bar-fill" id="loader-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BACKGROUND LAYER ===== -->
+  <div class="bg-layer">
+    <div class="bg-gradient"></div>
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+    <div class="bg-ring bg-ring--outer"></div>
+    <div class="bg-ring bg-ring--inner"></div>
+    <div class="bg-dots"></div>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <a href="/" class="logo-link" id="logo">
+          <div class="logo-icon">
+            <img src="assets/homie-5.png" alt="Homies Logo" />
+          </div>
+          <div class="logo-text">
+            <span class="logo-name">HOMIES</span>
+            <span class="logo-sub">CREW QUEST</span>
+          </div>
+        </a>
+        <div class="nav-actions">
+          <!-- X / Twitter -->
+          <a href="https://x.com/HomiesART" target="_blank" rel="noopener" class="nav-btn" id="nav-twitter" title="Official X / Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="btn-label">X / Twitter</span>
+          </a>
+
+          <!-- OpenSea -->
+          <a href="#" class="nav-btn" id="nav-opensea" title="OpenSea Collection">
+            <svg viewBox="0 0 90 90" fill="currentColor">
+              <path d="M45 0C20.151 0 0 20.151 0 45C0 69.849 20.151 90 45 90C69.849 90 90 69.849 90 45C90 20.151 69.858 0 45 0ZM22.203 46.512L22.392 46.206L34.101 27.891C34.272 27.63 34.677 27.657 34.803 27.945C36.756 32.328 38.448 37.782 37.656 41.175C37.323 42.57 36.396 44.46 35.352 46.206C35.217 46.458 35.072 46.71 34.911 46.953C34.839 47.061 34.713 47.124 34.578 47.124H22.545C22.221 47.124 22.032 46.773 22.203 46.512Z"/>
+            </svg>
+            <span class="btn-label">OpenSea</span>
+          </a>
+
+          <!-- Status badge -->
+          <div class="status-badge" id="status-badge">
+            <span class="status-dot-wrap">
+              <span class="status-dot-ping"></span>
+              <span class="status-dot"></span>
+            </span>
+            <span>CREW OPEN</span>
+          </div>
+
+          <!-- CTA -->
+          <button class="btn-primary nav-join" id="nav-join-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            <span>JOIN CREW</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+          <path d="M20 3v4"/><path d="M22 5h-4"/>
+          <path d="M4 17v2"/><path d="M5 18H3"/>
+        </svg>
+        <span>HOMIES INITIATION — PHASE I</span>
+      </div>
+
+      <h1 class="hero-title">
+        Join the <span class="highlight">Homies Crew</span>
+      </h1>
+
+      <p class="hero-desc">
+        Meet the crew. Prove your loyalty. Earn your place in the neighborhood.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn-hero" id="hero-join-btn">
+          <span>JOIN THE CREW</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCROLLING GALLERY MARQUEE -->
+    <section class="marquee-section" id="marquee">
+      <div class="marquee-track" id="marquee-track">
+        <!-- First set -->
+        <div class="marquee-item"><img src="assets/homie-1.png" alt="Homie #1" /></div>
+        <div class="marquee-item"><img src="assets/homie-2.png" alt="Homie #2" /></div>
+        <div class="marquee-item"><img src="assets/homie-3.png" alt="Homie #3" /></div>
+        <div class="marquee-item"><img src="assets/homie-4.png" alt="Homie #4" /></div>
+        <div class="marquee-item"><img src="assets/homie-5.png" alt="Homie #5" /></div>
+        <div class="marquee-item"><img src="assets/homie-6.png" alt="Homie #6" /></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item"><img src="assets/homie-1.png" alt="Homie #1" /></div>
+        <div class="marquee-item"><img src="assets/homie-2.png" alt="Homie #2" /></div>
+        <div class="marquee-item"><img src="assets/homie-3.png" alt="Homie #3" /></div>
+        <div class="marquee-item"><img src="assets/homie-4.png" alt="Homie #4" /></div>
+        <div class="marquee-item"><img src="assets/homie-5.png" alt="Homie #5" /></div>
+        <div class="marquee-item"><img src="assets/homie-6.png" alt="Homie #6" /></div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-glow about-glow--1"></div>
+      <div class="about-glow about-glow--2"></div>
+      <div class="about-inner">
+        <div class="section-badge anim-fade-up">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4"/><path d="M22 5h-4"/>
+              <path d="M4 17v2"/><path d="M5 18H3"/>
+            </svg>
+            The World of Homies
+          </span>
+        </div>
+
+        <h2 class="section-title anim-fade-up">
+          A Pixel Art Crew, <span class="highlight">Block by Block</span>
+        </h2>
+
+        <p class="section-desc anim-fade-up">
+          Homies is a <strong>pixel art NFT collection</strong> of unique, adorable characters — each rocking their own style, personality, and accessories. Every piece crafted in <span class="white">pixelated perfection</span>.
+        </p>
+
+        <!-- STATS -->
+        <div class="stats-grid anim-stagger">
+          <div class="stat-card stat-card--green">
+            <div class="stat-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>
+              </svg>
+            </div>
+            <span class="stat-card__value">5,555</span>
+            <span class="stat-card__label">Homies</span>
+          </div>
+          <div class="stat-card stat-card--purple">
+            <div class="stat-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+                <path d="M20 3v4"/><path d="M22 5h-4"/>
+                <path d="M4 17v2"/><path d="M5 18H3"/>
+              </svg>
+            </div>
+            <span class="stat-card__value">Pixel</span>
+            <span class="stat-card__label">Art Style</span>
+          </div>
+          <div class="stat-card stat-card--cyan">
+            <div class="stat-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/>
+                <path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/>
+              </svg>
+            </div>
+            <span class="stat-card__value">150+</span>
+            <span class="stat-card__label">Traits</span>
+          </div>
+        </div>
+
+        <!-- INFO CARDS -->
+        <div class="info-grid anim-stagger">
+          <div class="info-card">
+            <div class="info-card__glow"></div>
+            <div class="info-card__body">
+              <div class="info-card__emoji">🏠</div>
+              <div>
+                <h3 class="info-card__title">The Neighborhood</h3>
+                <p class="info-card__desc">A pixelated world of unique characters — each homie has their own personality, style, and accessories that make them one-of-a-kind.</p>
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card__glow"></div>
+            <div class="info-card__body">
+              <div class="info-card__emoji">⛓️</div>
+              <div>
+                <h3 class="info-card__title">On-Chain Forever</h3>
+                <p class="info-card__desc">Every Homie lives on the blockchain — your pixel buddy is yours forever, secured and verified on-chain.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION GALLERY -->
+    <section class="gallery" id="collection">
+      <div class="about-inner">
+        <div class="section-badge anim-fade-up">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+            </svg>
+            The Collection
+          </span>
+        </div>
+
+        <h2 class="section-title anim-fade-up">
+          Meet the <span class="highlight">Crew</span>
+        </h2>
+
+        <p class="section-desc anim-fade-up">
+          Each Homie is hand-crafted with love in pixel art. Here are some members of the crew.
+        </p>
+
+        <div class="gallery-grid anim-stagger">
+          <div class="gallery-card">
+            <img src="assets/homie-1.png" alt="Homie #1" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #001</span>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="assets/homie-2.png" alt="Homie #2" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #002</span>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="assets/homie-3.png" alt="Homie #3" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #003</span>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="assets/homie-4.png" alt="Homie #4" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #004</span>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="assets/homie-5.png" alt="Homie #5" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #005</span>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="assets/homie-6.png" alt="Homie #6" />
+            <div class="gallery-card__overlay">
+              <span class="gallery-card__name">HOMIE #006</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="roadmap" id="roadmap">
+      <div class="about-inner">
+        <div class="section-badge anim-fade-up">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.855z"/>
+            </svg>
+            Roadmap
+          </span>
+        </div>
+
+        <h2 class="section-title anim-fade-up">
+          The <span class="highlight">Game Plan</span>
+        </h2>
+
+        <p class="section-desc anim-fade-up">
+          From the block to the blockchain — here's what's coming for the Homies crew.
+        </p>
+
+        <div class="roadmap-timeline anim-fade-up">
+          <div class="roadmap-item">
+            <div class="roadmap-dot"></div>
+            <div class="roadmap-phase">Phase 1 — Assembly</div>
+            <h3 class="roadmap-heading">Build the Community</h3>
+            <p class="roadmap-desc">Launch Twitter, grow the crew, build the hype. Every Homie matters — from day one OGs to newcomers.</p>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot"></div>
+            <div class="roadmap-phase">Phase 2 — Art Drop</div>
+            <h3 class="roadmap-heading">Collection Reveal</h3>
+            <p class="roadmap-desc">Full collection art reveal and sneak peeks. Whitelist opens for early supporters and true homies.</p>
+          </div>
+          <div class="roadmap-item roadmap-item--upcoming">
+            <div class="roadmap-dot"></div>
+            <div class="roadmap-phase">Phase 3 — Mint Day</div>
+            <h3 class="roadmap-heading">Public Mint Launch</h3>
+            <p class="roadmap-desc">Homies hit the blockchain. Mint your pixel buddy and officially join the crew forever.</p>
+          </div>
+          <div class="roadmap-item roadmap-item--future">
+            <div class="roadmap-dot"></div>
+            <div class="roadmap-phase">Phase 4 — Beyond</div>
+            <h3 class="roadmap-heading">Expansion & Utility</h3>
+            <p class="roadmap-desc">Merch, collabs, holder perks, and surprises. The neighborhood keeps growing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+            <path d="M20 3v4"/><path d="M22 5h-4"/>
+            <path d="M4 17v2"/><path d="M5 18H3"/>
+          </svg>
+          <span class="footer-brand__name">HOMIES</span>
+          <span class="footer-copy">© 2026 Homies Crew. All rights reserved.</span>
+        </div>
+        <div class="footer-links">
+          <a href="admin.html" class="footer-admin-link" title="Mission Control & Tasks Admin Panel">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>ADMIN HQ</span>
+          </a>
+          <a href="https://x.com/HomiesART" target="_blank" rel="noopener" title="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ===== WHITELIST MODAL ===== -->
+  <div class="wl-overlay" id="wl-overlay">
+    <div class="wl-panel">
+      <button class="wl-close" id="wl-close" title="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <!-- Form area (hidden on success) -->
+      <div class="wl-form-area" id="wl-form-area">
+        <div class="wl-header">
+          <h2 class="wl-title" id="wl-modal-title">Homies Whitelist Quests</h2>
+          <p class="wl-subtitle" id="wl-modal-subtitle">Complete the quests and enter proof details to reserve your spot in the crew.</p>
+        </div>
+
+        <!-- Status banner -->
+        <div id="wl-status-banner"></div>
+
+        <!-- Quests label -->
+        <div class="wl-quests-label">Whitelist Quests</div>
+
+        <!-- Task cards (rendered by JS) -->
+        <div id="wl-tasks-container"></div>
+
+        <!-- Submit -->
+        <div class="wl-submit-wrap">
+          <button class="wl-submit" id="wl-submit-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            <span>SUBMIT APPLICATION</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success state -->
+      <div class="wl-success" id="wl-success">
+        <div class="wl-success__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <path d="m9 11 3 3L22 4"/>
+          </svg>
+        </div>
+        <h3 class="wl-success__title">You're In, Homie!</h3>
+        <p class="wl-success__desc">Your whitelist application has been submitted. We'll review your proofs and get back to you. Stay tuned on <a href="https://x.com/HomiesART" target="_blank" style="color: var(--neon-green);">@HomiesART</a>!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="app.js"></script>
+  <script>
+    // ── Loading Screen ───────────────────────────────────
+    (function() {
+      const fill = document.getElementById('loader-fill');
+      const pct = document.getElementById('loader-pct');
+      const loader = document.getElementById('loader');
+      let progress = 0;
+
+      function tick() {
+        const remaining = 100 - progress;
+        const jump = Math.random() * remaining * 0.25 + 2;
+        progress = Math.min(progress + jump, 100);
+        fill.style.width = progress + '%';
+        pct.textContent = Math.round(progress) + '%';
+
+        if (progress < 100) {
+          setTimeout(tick, 120 + Math.random() * 200);
+        } else {
+          setTimeout(() => {
+            loader.classList.add('hidden');
+          }, 400);
+        }
+      }
+
+      window.addEventListener('load', () => {
+        setTimeout(tick, 300);
+      });
+    })();
+
+    // ── Scroll Animations ────────────────────────────────
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.anim-fade-up, .anim-stagger').forEach(el => {
+        observer.observe(el);
+      });
+    })();
+
+    // ── Whitelist Modal ──────────────────────────────────
+    (function() {
+      const overlay = document.getElementById('wl-overlay');
+      const closeBtn = document.getElementById('wl-close');
+      const formArea = document.getElementById('wl-form-area');
+      const success = document.getElementById('wl-success');
+      const submitBtn = document.getElementById('wl-submit-btn');
+      const tasksContainer = document.getElementById('wl-tasks-container');
+      const statusBanner = document.getElementById('wl-status-banner');
+      const modalTitle = document.getElementById('wl-modal-title');
+      const modalSubtitle = document.getElementById('wl-modal-subtitle');
+
+      // SVG icons for task types
+      const TASK_ICONS = {
+        twitter_follow: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+        twitter_engage: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+        wallet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>`,
+        default: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
+      };
+
+      function renderTasks() {
+        const tasks = HomiesDB.getTasks();
+        const settings = HomiesDB.getSettings();
+
+        // Update title/subtitle
+        modalTitle.textContent = settings.whitelistTitle || 'Homies Whitelist Quests';
+        modalSubtitle.textContent = settings.whitelistSubtitle || '';
+
+        // Update header status badge
+        const headerStatusBadge = document.getElementById('status-badge');
+        if (headerStatusBadge) {
+          if (settings.paused) {
+            headerStatusBadge.classList.add('status-badge--paused');
+            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
+          } else {
+            headerStatusBadge.classList.remove('status-badge--paused');
+            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW OPEN';
+          }
+        }
+
+        // Status banner
+        if (settings.paused) {
+          statusBanner.innerHTML = `
+            <div class="wl-status wl-status--paused">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+              <span>Whitelist applications are currently paused by the administration.</span>
+            </div>`;
+        } else {
+          statusBanner.innerHTML = `
+            <div class="wl-status wl-status--open">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <span>Whitelist is open! Complete the quests below to apply.</span>
+            </div>`;
+        }
+
+        // Task cards
+        tasksContainer.innerHTML = '';
+        tasks.forEach(task => {
+          const icon = TASK_ICONS[task.type] || TASK_ICONS.default;
+          const badge = task.required
+            ? '<span class="wl-task__badge wl-task__badge--required">Required</span>'
+            : '<span class="wl-task__badge wl-task__badge--optional">Optional</span>';
+
+          // Build title with clickable links
+          let titleHTML = task.title;
+          if (task.accounts) {
+            task.accounts.forEach((acc, i) => {
+              const link = task.links?.[i] || `https://x.com/${acc.replace('@', '')}`;
+              titleHTML = titleHTML.replace(acc, `<a href="${link}" target="_blank" rel="noopener">${acc}</a>`);
+            });
+          }
+
+          const walletClass = task.type === 'wallet' ? ' wl-task__input--wallet' : '';
+
+          const card = document.createElement('div');
+          card.className = 'wl-task';
+          card.innerHTML = `
+            <div class="wl-task__header">
+              <div class="wl-task__icon">${icon}</div>
+              <div class="wl-task__info">
+                <div class="wl-task__title">${titleHTML} ${badge}</div>
+              </div>
+            </div>
+            <input type="text" class="wl-task__input${walletClass}" data-task-id="${task.id}" data-required="${task.required}" placeholder="${task.placeholder || ''}" ${settings.paused ? 'disabled' : ''} />
+            <div class="wl-task__error" id="err-${task.id}">This field is required</div>`;
+          tasksContainer.appendChild(card);
+
+          // Border highlight on input
+          const input = card.querySelector('input');
+          input.addEventListener('input', () => {
+            card.classList.toggle('wl-task--filled', input.value.trim().length > 0);
+            input.classList.remove('error');
+            card.querySelector('.wl-task__error').classList.remove('show');
+          });
+        });
+
+        // Disable submit if paused
+        submitBtn.disabled = settings.paused;
+      }
+
+      function openModal() {
+        formArea.classList.remove('hidden');
+        success.classList.remove('show');
+        renderTasks();
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // Open modal on CTA clicks
+      document.querySelectorAll('#hero-join-btn, #nav-join-btn').forEach(btn => {
+        btn.addEventListener('click', openModal);
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+      });
+
+      // Submit
+      submitBtn.addEventListener('click', () => {
+        const settings = HomiesDB.getSettings();
+        if (settings.paused) return;
+
+        const tasks = HomiesDB.getTasks();
+        const proofs = {};
+        let valid = true;
+
+        // Validate each task
+        tasks.forEach(task => {
+          const input = document.querySelector(`[data-task-id="${task.id}"]`);
+          const errEl = document.getElementById(`err-${task.id}`);
+          const val = input?.value?.trim() || '';
+          proofs[task.id] = val;
+
+          if (task.required && !val) {
+            valid = false;
+            input.classList.add('error');
+            errEl.classList.add('show');
+          }
+        });
+
+        if (!valid) return;
+
+        // Save application
+        HomiesDB.addApplication({ proofs });
+
+        // Show success
+        formArea.classList.add('hidden');
+        success.classList.add('show');
+      });
+
+      // Initial header badge sync on page load
+      const initSettings = HomiesDB.getSettings();
+      const headerStatusBadge = document.getElementById('status-badge');
+      if (headerStatusBadge && initSettings.paused) {
+        headerStatusBadge.classList.add('status-badge--paused');
+        headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
+      }
+    })();
+  </script>
+
+</body>
+</html>
