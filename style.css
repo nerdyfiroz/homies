@@ -405,6 +405,14 @@ header {
   border-color: rgba(0, 240, 160, 0.3);
 }
 
+.nav-btn--icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .nav-btn svg {
   width: 16px;
   height: 16px;
