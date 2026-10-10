@@ -13,13 +13,13 @@
   --obsidian-card: #0c0e17;
   --obsidian-hover: #141722;
   --border: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(255, 216, 77, 0.4);
+  --border-focus: rgba(0, 240, 255, 0.4);
 
   --neon-green: #00f0a0;
   --neon-cyan: #00e5ff;
   --neon-purple: #b44dff;
   --neon-pink: #ff4da6;
-  --neon-yellow: #f0e040;
+  --neon-yellow: #00e5ff;
   --neon-red: #ff4d6a;
 
   --text-primary: #f0f2f8;
@@ -392,12 +392,12 @@ button, input, select, textarea {
 }
 
 .wl-status-toggle.paused .status-dot-ping {
-  background: rgba(240, 224, 64, 0.5);
+  background: rgba(0, 240, 255, 0.5);
 }
 
 .wl-status-toggle.paused .status-dot-core {
-  background: var(--neon-yellow);
-  box-shadow: 0 0 10px var(--neon-yellow);
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
 }
 
 .status-text {
@@ -411,7 +411,7 @@ button, input, select, textarea {
 }
 
 .wl-status-toggle.paused .status-text {
-  color: var(--neon-yellow);
+  color: var(--neon-cyan);
 }
 
 @keyframes ping {
@@ -468,9 +468,9 @@ button, input, select, textarea {
 }
 
 .stat-box--pending .stat-box__icon {
-  background: rgba(240, 224, 64, 0.12);
-  color: var(--neon-yellow);
-  border: 1px solid rgba(240, 224, 64, 0.25);
+  background: rgba(201, 188, 255, 0.12);
+  color: #c9bcff;
+  border: 1px solid rgba(201, 188, 255, 0.25);
 }
 
 .stat-box--approved .stat-box__icon {
@@ -836,13 +836,13 @@ button, input, select, textarea {
 }
 
 .status-pill--pending {
-  background: rgba(240, 224, 64, 0.12);
-  border: 1px solid rgba(240, 224, 64, 0.3);
-  color: var(--neon-yellow);
+  background: rgba(201, 188, 255, 0.12);
+  border: 1px solid rgba(201, 188, 255, 0.3);
+  color: #c9bcff;
 }
 .status-pill--pending::before {
-  background: var(--neon-yellow);
-  box-shadow: 0 0 6px var(--neon-yellow);
+  background: #c9bcff;
+  box-shadow: 0 0 6px #c9bcff;
 }
 
 .status-pill--rejected {
