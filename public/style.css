@@ -3528,3 +3528,42 @@ footer {
   pointer-events: none;
   z-index: 2000;
 }
+
+
+/* ===== QUEST FORM THEME ALIGNMENT ===== */
+/* Keep the whitelist form and quest cards consistent with the site's sage canvas. */
+.suitebox-body,
+.quest-task-card {
+  background: #E5ECCB;
+  color: var(--text-primary);
+}
+
+.quest-task-card:hover,
+.form-input:focus {
+  background: #E5ECCB;
+}
+
+.card-title,
+.quest-task-title {
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  color: var(--text-secondary);
+}
+
+.form-input {
+  background: #f4efe2;
+  color: var(--text-primary);
+  border-color: rgba(28, 35, 64, 0.25);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus {
+  background: #f4efe2;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.18);
+}
