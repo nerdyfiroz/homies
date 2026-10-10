@@ -1,0 +1,7 @@
+{
+  "name": "Homies — Join the Crew",
+  "description": "Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

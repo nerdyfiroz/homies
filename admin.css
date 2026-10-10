@@ -1,5 +1,5 @@
 /* ===== HOMIES ADMIN PANEL CSS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;800;900&family=Press+Start+2P&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 *, *::before, *::after {
   margin: 0;
@@ -8,12 +8,12 @@
 }
 
 :root {
-  --obsidian: #12141c;
-  --obsidian-light: #161924;
-  --obsidian-card: #1c1f2e;
-  --obsidian-hover: #23273a;
+  --obsidian: #000000;
+  --obsidian-light: #07080d;
+  --obsidian-card: #0c0e17;
+  --obsidian-hover: #141722;
   --border: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(0, 240, 160, 0.4);
+  --border-focus: rgba(255, 216, 77, 0.4);
 
   --neon-green: #00f0a0;
   --neon-cyan: #00e5ff;
@@ -26,8 +26,10 @@
   --text-secondary: #8a8fa8;
   --text-muted: #555a70;
 
-  --font-pixel: 'Press Start 2P', monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pixel: 'Chewy', cursive, sans-serif;
+  --font-display: 'Chewy', cursive, sans-serif;
+  --font-sans: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -36,7 +38,8 @@
 body {
   background: var(--obsidian);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-weight: 700;
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

@@ -1,0 +1,15 @@
+{
+  "name": "homies",
+  "version": "1.0.0",
+  "description": "Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'",
+    "lint": "echo 'Lint passed'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

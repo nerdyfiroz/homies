@@ -13,33 +13,27 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Homies — Join the Crew" />
   <meta name="twitter:description" content="Homies is a pixel art NFT collection. Join the crew, earn your spot, and become part of the movement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;800;900&family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== LOADING SCREEN ===== -->
-  <div id="loader">
-    <div class="loader-bg"></div>
-    <div class="loader-glow loader-glow--green"></div>
-    <div class="loader-glow loader-glow--purple"></div>
-    <div class="loader-content">
-      <div class="loader-avatar">
-        <img src="assets/homie-5.png" alt="Homies Loading" />
-      </div>
-      <h1 class="loader-title">HOMIES</h1>
-      <span class="loader-subtitle">THE CREW AWAITS</span>
-      <div class="loader-bar-wrap">
-        <div class="loader-bar-info">
-          <span class="loader-bar-label">
-            <span class="pulse-dot"></span>
-            ASSEMBLING CREW...
-          </span>
-          <span class="loader-bar-pct" id="loader-pct">0%</span>
-        </div>
-        <div class="loader-bar-track">
-          <div class="loader-bar-fill" id="loader-fill"></div>
+  <!-- ===== LOADING / INTRO SCREEN (FOMIES STYLE) ===== -->
+  <div id="intro">
+    <div class="intro-stack">
+      <div class="intro-brand-wrap" tabindex="-1" aria-label="HOMIES">
+        <div class="intro-logo-text">
+          <span class="intro-letter" style="--i:0">H</span>
+          <span class="intro-letter" style="--i:1">O</span>
+          <span class="intro-letter" style="--i:2">M</span>
+          <span class="intro-letter" style="--i:3">I</span>
+          <span class="intro-letter" style="--i:4">E</span>
+          <span class="intro-letter" style="--i:5">S</span>
         </div>
       </div>
+      <button type="button" class="btn" id="intro-enter">ENTER THE CREW</button>
     </div>
   </div>
 
@@ -428,31 +422,54 @@
   <!-- ===== SCRIPTS ===== -->
   <script src="app.js"></script>
   <script>
-    // ── Loading Screen ───────────────────────────────────
+    // ── Fomies-Style Intro / Loading Screen ───────────────
     (function() {
-      const fill = document.getElementById('loader-fill');
-      const pct = document.getElementById('loader-pct');
-      const loader = document.getElementById('loader');
-      let progress = 0;
+      const intro = document.getElementById('intro');
+      const enterBtn = document.getElementById('intro-enter');
+      if (!intro) return;
 
-      function tick() {
-        const remaining = 100 - progress;
-        const jump = Math.random() * remaining * 0.25 + 2;
-        progress = Math.min(progress + jump, 100);
-        fill.style.width = progress + '%';
-        pct.textContent = Math.round(progress) + '%';
+      let dismissed = false;
+      let isReady = false;
 
-        if (progress < 100) {
-          setTimeout(tick, 120 + Math.random() * 200);
-        } else {
-          setTimeout(() => {
-            loader.classList.add('hidden');
-          }, 400);
-        }
+      function enterCrew() {
+        if (dismissed) return;
+        dismissed = true;
+        intro.classList.add('gone');
+        document.dispatchEvent(new Event('intro-done'));
+        setTimeout(() => {
+          if (intro.parentNode) intro.remove();
+        }, 500);
       }
 
-      window.addEventListener('load', () => {
-        setTimeout(tick, 300);
+      function setReady() {
+        if (isReady || dismissed) return;
+        isReady = true;
+        intro.classList.add('ready');
+      }
+
+      // Authentic reveal of enter button after asset prep (~850ms)
+      setTimeout(setReady, 850);
+
+      if (enterBtn) {
+        enterBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          enterCrew();
+        });
+      }
+
+      // Keyboard entry
+      window.addEventListener('keydown', (e) => {
+        if (!dismissed && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          enterCrew();
+        }
+      });
+
+      // Quick tap / click anywhere once ready enters
+      intro.addEventListener('click', () => {
+        if (isReady && !dismissed) {
+          enterCrew();
+        }
       });
     })();
 
