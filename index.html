@@ -37,15 +37,19 @@
     </div>
   </div>
 
-  <!-- ===== BACKGROUND LAYER ===== -->
+  <!-- ===== BACKGROUND LAYER (NFT COMPATIBLE ANIMATED THEME) ===== -->
   <div class="bg-layer">
+    <!-- Dynamic Web3/NFT Matrix & Constellation Canvas -->
+    <canvas id="nft-bg-canvas" class="nft-bg-canvas"></canvas>
     <div class="bg-gradient"></div>
-    <div class="bg-orb bg-orb--1"></div>
-    <div class="bg-orb bg-orb--2"></div>
-    <div class="bg-orb bg-orb--3"></div>
-    <div class="bg-ring bg-ring--outer"></div>
-    <div class="bg-ring bg-ring--inner"></div>
+    <div class="bg-cyber-grid"></div>
+    <div class="bg-orb bg-orb--1 anim-pulse-slow"></div>
+    <div class="bg-orb bg-orb--2 anim-pulse-mid"></div>
+    <div class="bg-orb bg-orb--3 anim-pulse-slow"></div>
+    <div class="bg-ring bg-ring--outer anim-rotate-slow"></div>
+    <div class="bg-ring bg-ring--inner anim-rotate-reverse"></div>
     <div class="bg-dots"></div>
+    <div class="bg-scanline"></div>
   </div>
 
   <!-- ===== MAIN ===== -->
@@ -667,6 +671,131 @@
       }
 
       return { burst };
+    })();
+
+    // ── NFT Compatible Cyber Matrix & Constellation Background Engine ────────
+    (function() {
+      const canvas = document.getElementById('nft-bg-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = 0;
+      let height = 0;
+      let animFrameId = null;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // NFT symbols & data badges floating in background
+      const NFT_TOKENS = ['NFT', 'ETH', '0x', 'HOMIE', '💎', '✦', '▲', '⚡', '⛓️', 'WL', 'GEN0'];
+      const PALETTE = ['#00f0ff', '#6bf6ff', '#c9bcff', '#a4ecc8', '#ffb3a3', '#7bebfd'];
+
+      // Node constellation particles
+      const PARTICLE_COUNT = Math.min(48, Math.floor((window.innerWidth * window.innerHeight) / 22000));
+      const particles = [];
+
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 2 + 1.2,
+          color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+          alpha: Math.random() * 0.4 + 0.25,
+          token: Math.random() > 0.65 ? NFT_TOKENS[Math.floor(Math.random() * NFT_TOKENS.length)] : null,
+          tokenSize: Math.floor(Math.random() * 3 + 9),
+          pulse: Math.random() * Math.PI * 2,
+        });
+      }
+
+      // Mouse interactive parallax
+      let mouseX = width / 2;
+      let mouseY = height / 2;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      }, { passive: true });
+
+      let time = 0;
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        time += 0.02;
+
+        // Draw connecting NFT network constellation lines
+        const maxDist = 135;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDist) {
+              const lineAlpha = (1 - dist / maxDist) * 0.16;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0, 240, 255, ${lineAlpha})`;
+              ctx.lineWidth = 0.85;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw and update NFT particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+
+          // Gentle movement
+          p.x += p.vx;
+          p.y += p.vy;
+          p.pulse += 0.025;
+
+          // Screen wrap
+          if (p.x < -20) p.x = width + 20;
+          if (p.x > width + 20) p.x = -20;
+          if (p.y < -20) p.y = height + 20;
+          if (p.y > height + 20) p.y = -20;
+
+          // Mouse gentle repulsion
+          const mdx = p.x - mouseX;
+          const mdy = p.y - mouseY;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 140 && mdist > 0) {
+            const force = (140 - mdist) / 140 * 0.8;
+            p.x += (mdx / mdist) * force;
+            p.y += (mdy / mdist) * force;
+          }
+
+          const currentAlpha = p.alpha + Math.sin(p.pulse) * 0.15;
+          ctx.save();
+          ctx.globalAlpha = Math.max(0.1, Math.min(0.85, currentAlpha));
+
+          // Draw node glow dot
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 8;
+          ctx.fill();
+
+          // Draw NFT token badge / glyph
+          if (p.token) {
+            ctx.font = `700 ${p.tokenSize}px 'Courier Prime', monospace`;
+            ctx.fillStyle = p.color;
+            ctx.fillText(p.token, p.x + 8, p.y - 6);
+          }
+
+          ctx.restore();
+        }
+
+        animFrameId = requestAnimationFrame(render);
+      }
+
+      render();
     })();
 
     // ── Animated Whitelist Quests Modal Logic ───────────────
