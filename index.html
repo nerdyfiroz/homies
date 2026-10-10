@@ -82,11 +82,7 @@
 
           <!-- Status badge -->
           <div class="status-badge" id="status-badge">
-            <span class="status-dot-wrap">
-              <span class="status-dot-ping"></span>
-              <span class="status-dot"></span>
-            </span>
-            <span>CREW OPEN</span>
+            <span class="status-badge-text">CREW OPEN</span>
           </div>
 
           <!-- CTA -->
@@ -176,7 +172,7 @@
 
         <!-- STATS -->
         <div class="stats-grid anim-stagger">
-          <div class="stat-card stat-card--green">
+          <div class="stat-card stat-card--butter">
             <div class="stat-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/>
@@ -185,7 +181,7 @@
             <span class="stat-card__value">2,000</span>
             <span class="stat-card__label">Homies</span>
           </div>
-          <div class="stat-card stat-card--purple">
+          <div class="stat-card stat-card--lilac">
             <div class="stat-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
@@ -196,7 +192,7 @@
             <span class="stat-card__value">Pixel</span>
             <span class="stat-card__label">Art Style</span>
           </div>
-          <div class="stat-card stat-card--cyan">
+          <div class="stat-card stat-card--mint">
             <div class="stat-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/>
@@ -228,67 +224,6 @@
                 <h3 class="info-card__title">On-Chain Forever</h3>
                 <p class="info-card__desc">Every Homie lives on the blockchain — your pixel buddy is yours forever, secured and verified on-chain.</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COLLECTION GALLERY -->
-    <section class="gallery" id="collection">
-      <div class="about-inner">
-        <div class="section-badge anim-fade-up">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-            </svg>
-            The Collection
-          </span>
-        </div>
-
-        <h2 class="section-title anim-fade-up">
-          Meet the <span class="highlight">Crew</span>
-        </h2>
-
-        <p class="section-desc anim-fade-up">
-          Each Homie is hand-crafted with love in pixel art. Here are some members of the crew.
-        </p>
-
-        <div class="gallery-grid anim-stagger">
-          <div class="gallery-card">
-            <img src="assets/homie-1.png" alt="Homie #1" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #001</span>
-            </div>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/homie-2.png" alt="Homie #2" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #002</span>
-            </div>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/homie-3.png" alt="Homie #3" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #003</span>
-            </div>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/homie-4.png" alt="Homie #4" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #004</span>
-            </div>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/homie-5.png" alt="Homie #5" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #005</span>
-            </div>
-          </div>
-          <div class="gallery-card">
-            <img src="assets/homie-6.png" alt="Homie #6" />
-            <div class="gallery-card__overlay">
-              <span class="gallery-card__name">HOMIE #006</span>
             </div>
           </div>
         </div>
@@ -368,56 +303,190 @@
 
   </main>
 
-  <!-- ===== WHITELIST MODAL ===== -->
-  <div class="wl-overlay" id="wl-overlay">
-    <div class="wl-panel">
-      <button class="wl-close" id="wl-close" title="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ===== JOIN THE CREW MODAL (CHARACTER + BRIEFCASE + EXPANDING FORM ANIMATION) ===== -->
+  <div class="crew-modal-overlay" id="crew-modal-overlay" aria-hidden="true">
+    <div class="crew-modal-backdrop" id="crew-modal-backdrop"></div>
+    <div class="crew-modal-wrapper" id="crew-modal-wrapper">
+
+      <button class="crew-modal-close" id="crew-modal-close" title="Close" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
         </svg>
       </button>
 
-      <!-- Form area (hidden on success) -->
-      <div class="wl-form-area" id="wl-form-area">
-        <div class="wl-header">
-          <h2 class="wl-title" id="wl-modal-title">Homies Whitelist Quests</h2>
-          <p class="wl-subtitle" id="wl-modal-subtitle">Complete the quests and enter proof details to reserve your spot in the crew.</p>
+      <!-- CHARACTER STAGE -->
+      <div class="character-stage" id="character-stage">
+        <div class="char-stand" id="char-stand">
+          <div class="char-bubble" id="char-bubble">READY TO JOIN?</div>
+          <div class="char-avatar-box">
+            <img id="char-actor" src="assets/homie-5.png" alt="Homie Character" class="char-actor" />
+          </div>
+          <div class="char-shadow"></div>
         </div>
 
-        <!-- Status banner -->
-        <div id="wl-status-banner"></div>
-
-        <!-- Quests label -->
-        <div class="wl-quests-label">Whitelist Quests</div>
-
-        <!-- Task cards (rendered by JS) -->
-        <div id="wl-tasks-container"></div>
-
-        <!-- Submit -->
-        <div class="wl-submit-wrap">
-          <button class="wl-submit" id="wl-submit-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-            <span>SUBMIT APPLICATION</span>
-          </button>
+        <div class="briefcase-prop" id="briefcase-prop" title="Homies Briefcase">
+          <div class="briefcase-case">
+            <div class="briefcase-handle"></div>
+            <div class="briefcase-lock"></div>
+            <div class="briefcase-sticker">HOMIES</div>
+          </div>
+          <div class="briefcase-shadow"></div>
         </div>
       </div>
 
-      <!-- Success state -->
-      <div class="wl-success" id="wl-success">
-        <div class="wl-success__icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <path d="m9 11 3 3L22 4"/>
-          </svg>
+      <!-- REGISTRATION FORM CARD (Expands Upwards) -->
+      <div class="join-card" id="join-card">
+        <!-- Top Tab Detail -->
+        <div class="card-pin-header">
+          <span class="card-pill">WHITELIST APPLICATION</span>
+          <span class="card-serial" id="card-serial-badge">#HM-2026</span>
         </div>
-        <h3 class="wl-success__title">You're In, Homie!</h3>
-        <p class="wl-success__desc">Your whitelist application has been submitted. We'll review your proofs and get back to you. Stay tuned on <a href="https://x.com/HomiesART" target="_blank" style="color: var(--neon-green);">@HomiesART</a>!</p>
+
+        <!-- Form State: Whitelist Quests -->
+        <div class="card-form-area" id="card-form-area">
+          <div class="card-header">
+            <h2 class="card-title" id="wl-form-title">Homies Whitelist Quests</h2>
+            <p class="card-subtitle" id="wl-form-subtitle">Complete the quests and enter proof details to reserve your spot in the crew.</p>
+          </div>
+
+          <!-- Status alert if admin paused -->
+          <div id="join-status-alert"></div>
+
+          <!-- Whitelist Quest Tasks Form -->
+          <form id="join-form" onsubmit="return false;">
+            <div class="quest-tasks-list" id="quest-tasks-list">
+              <!-- Dynamically rendered or pre-seeded -->
+              <div class="quest-task-card" data-task-id="t1">
+                <div class="quest-task-header">
+                  <div class="quest-task-title-group">
+                    <span class="quest-num-pill">QUEST 1</span>
+                    <h3 class="quest-task-title">Follow @HomiesART on X</h3>
+                    <span class="quest-req-badge">REQUIRED</span>
+                  </div>
+                  <a href="https://x.com/HomiesART" target="_blank" rel="noopener" class="quest-action-link">
+                    <span>Follow @HomiesART</span>
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                </div>
+                <div class="input-wrap">
+                  <input type="text" id="proof-t1" class="form-input" placeholder="@yourusername (or profile link)" autocomplete="off" />
+                </div>
+                <div class="field-error" id="err-proof-t1">Please enter your X handle or profile link</div>
+              </div>
+
+              <div class="quest-task-card" data-task-id="t2">
+                <div class="quest-task-header">
+                  <div class="quest-task-title-group">
+                    <span class="quest-num-pill">QUEST 2</span>
+                    <h3 class="quest-task-title">Like, Repost & Comment on Pinned Post</h3>
+                    <span class="quest-req-badge">REQUIRED</span>
+                  </div>
+                  <a href="https://x.com/HomiesART" target="_blank" rel="noopener" class="quest-action-link">
+                    <span>Open Post ↗</span>
+                  </a>
+                </div>
+                <div class="input-wrap">
+                  <input type="text" id="proof-t2" class="form-input" placeholder="https://x.com/.../status/... (comment link)" autocomplete="off" />
+                </div>
+                <div class="field-error" id="err-proof-t2">Please enter your tweet / comment link</div>
+              </div>
+
+              <div class="quest-task-card" data-task-id="t3">
+                <div class="quest-task-header">
+                  <div class="quest-task-title-group">
+                    <span class="quest-num-pill">QUEST 3</span>
+                    <h3 class="quest-task-title">Submit EVM Wallet Address</h3>
+                    <span class="quest-req-badge">REQUIRED</span>
+                  </div>
+                </div>
+                <div class="input-wrap">
+                  <input type="text" id="proof-t3" class="form-input font-mono" style="font-family: var(--font-mono); font-size: 13px;" placeholder="0x1234567890abcdef1234567890abcdef12345678" autocomplete="off" />
+                </div>
+                <div class="field-error" id="err-proof-t3">Please enter a valid 0x EVM wallet address</div>
+              </div>
+            </div>
+
+            <!-- Security Captcha -->
+            <div class="captcha-card" id="captcha-card">
+              <div class="captcha-label-wrap">
+                <span class="field-label" style="margin-bottom:0;">SECURITY CHECK</span>
+                <span class="captcha-question" id="captcha-question">4 + 7 = ?</span>
+              </div>
+              <div class="captcha-input-wrap">
+                <input type="text" id="captcha-answer" class="form-input" placeholder="Enter answer" autocomplete="off" style="padding: 9px 12px;" />
+                <div class="field-error" id="err-captcha">Incorrect answer</div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-butter-submit" id="btn-submit-whitelist">
+                <span>SUBMIT APPLICATION</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success State: Official Whitelist Confirmation Pass -->
+        <div class="card-pass-area" id="card-pass-area" style="display: none;">
+          <div class="pass-wrapper">
+            <div class="pass-card" id="pass-card-print">
+              <div class="pass-top-band">
+                <span class="pass-brand">HOMIES WHITELIST PASS</span>
+                <span class="pass-id" id="pass-id-text">#HM-8841</span>
+              </div>
+              <div class="pass-content">
+                <div class="pass-photo-frame">
+                  <img id="pass-avatar-img" src="assets/homie-5.png" alt="Homies Pixel Character" />
+                  <div class="pass-photo-stamp">REGISTERED</div>
+                </div>
+                <div class="pass-details">
+                  <div class="pass-field">
+                    <span class="pass-label">APPLICATION STATUS</span>
+                    <span class="pass-value pass-value--badge" id="pass-status-val">PENDING REVIEW</span>
+                  </div>
+                  <div class="pass-field">
+                    <span class="pass-label">X HANDLE / PROOF</span>
+                    <span class="pass-value" id="pass-handle-val">@homie</span>
+                  </div>
+                  <div class="pass-field">
+                    <span class="pass-label">EVM WALLET</span>
+                    <span class="pass-value pass-value--mono" id="pass-wallet-val">0x...</span>
+                  </div>
+                  <div class="pass-field">
+                    <span class="pass-label">SUBMISSION DATE</span>
+                    <span class="pass-value pass-value--mono" id="pass-date-val">2026.10.10</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pass-bottom-bar">
+                <div class="pass-barcode">
+                  <span>||| | |||| | ||| |||| | ||||| ||| |||</span>
+                </div>
+                <div class="pass-seal">OFFICIAL HOMIE</div>
+              </div>
+            </div>
+
+            <div class="pass-actions">
+              <a href="https://x.com/intent/tweet?text=I%20just%20submitted%20my%20proofs%20for%20the%20%40HomiesART%20Whitelist!%20%F0%9F%8F%A0%E2%9C%A8%20Pixel%20art%20collection%20living%20on-chain.&url=https%3A%2F%2Fx.com%2FHomiesART" target="_blank" rel="noopener" class="btn-butter-secondary" id="btn-share-x">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>SHARE ON X</span>
+              </a>
+              <button type="button" class="btn-butter-submit" id="btn-pass-done">
+                <span>WELCOME TO THE HOOD</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+  <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
 
   <!-- ===== SCRIPTS ===== -->
   <script src="app.js"></script>
@@ -447,7 +516,6 @@
         intro.classList.add('ready');
       }
 
-      // Authentic reveal of enter button after asset prep (~850ms)
       setTimeout(setReady, 850);
 
       if (enterBtn) {
@@ -457,7 +525,6 @@
         });
       }
 
-      // Keyboard entry
       window.addEventListener('keydown', (e) => {
         if (!dismissed && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
@@ -465,7 +532,6 @@
         }
       });
 
-      // Quick tap / click anywhere once ready enters
       intro.addEventListener('click', () => {
         if (isReady && !dismissed) {
           enterCrew();
@@ -491,190 +557,373 @@
       });
     })();
 
-    // ── Whitelist Modal ──────────────────────────────────
-    (function() {
-      const overlay = document.getElementById('wl-overlay');
-      const closeBtn = document.getElementById('wl-close');
-      const formArea = document.getElementById('wl-form-area');
-      const success = document.getElementById('wl-success');
-      const submitBtn = document.getElementById('wl-submit-btn');
-      const tasksContainer = document.getElementById('wl-tasks-container');
-      const statusBanner = document.getElementById('wl-status-banner');
-      const modalTitle = document.getElementById('wl-modal-title');
-      const modalSubtitle = document.getElementById('wl-modal-subtitle');
+    // ── Confetti Particle Engine ────────────────────────
+    const Confetti = (() => {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return { burst: () => {} };
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animId = null;
 
-      // SVG icons for task types
-      const TASK_ICONS = {
-        twitter_follow: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
-        twitter_engage: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
-        wallet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>`,
-        default: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
-      };
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
 
-      function renderTasks() {
-        const tasks = HomiesDB.getTasks();
-        const settings = HomiesDB.getSettings();
+      const COLORS = ['#ffd84d', '#ffe98a', '#c9bcff', '#a4ecc8', '#ffb3a3', '#ffffff', '#1c2340'];
 
-        // Update title/subtitle
-        modalTitle.textContent = settings.whitelistTitle || 'Homies Whitelist Quests';
-        modalSubtitle.textContent = settings.whitelistSubtitle || '';
+      function createParticle(x, y) {
+        return {
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.8) * 18,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 6 + 4,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.35,
+          drag: 0.98,
+          life: 1,
+          decay: Math.random() * 0.015 + 0.01,
+        };
+      }
 
-        // Update header status badge
-        const headerStatusBadge = document.getElementById('status-badge');
-        if (headerStatusBadge) {
-          if (settings.paused) {
-            headerStatusBadge.classList.add('status-badge--paused');
-            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
-          } else {
-            headerStatusBadge.classList.remove('status-badge--paused');
-            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW OPEN';
-          }
-        }
+      function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.vx *= p.drag;
+          p.vy += p.gravity;
+          p.vy *= p.drag;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.rotSpeed;
+          p.life -= p.decay;
 
-        // Status banner
-        if (settings.paused) {
-          statusBanner.innerHTML = `
-            <div class="wl-status wl-status--paused">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-              <span>Whitelist applications are currently paused by the administration.</span>
-            </div>`;
-        } else {
-          statusBanner.innerHTML = `
-            <div class="wl-status wl-status--open">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-              <span>Whitelist is open! Complete the quests below to apply.</span>
-            </div>`;
-        }
-
-        // Task cards
-        tasksContainer.innerHTML = '';
-        tasks.forEach(task => {
-          const icon = TASK_ICONS[task.type] || TASK_ICONS.default;
-          const badge = task.required
-            ? '<span class="wl-task__badge wl-task__badge--required">Required</span>'
-            : '<span class="wl-task__badge wl-task__badge--optional">Optional</span>';
-
-          // Build title with clickable links
-          let titleHTML = task.title;
-          if (task.accounts) {
-            task.accounts.forEach((acc, i) => {
-              const link = task.links?.[i] || `https://x.com/${acc.replace('@', '')}`;
-              titleHTML = titleHTML.replace(acc, `<a href="${link}" target="_blank" rel="noopener">${acc}</a>`);
-            });
-          }
-
-          const walletClass = task.type === 'wallet' ? ' wl-task__input--wallet' : '';
-
-          const card = document.createElement('div');
-          card.className = 'wl-task';
-          card.innerHTML = `
-            <div class="wl-task__header">
-              <div class="wl-task__icon">${icon}</div>
-              <div class="wl-task__info">
-                <div class="wl-task__title">${titleHTML} ${badge}</div>
-              </div>
-            </div>
-            <input type="text" class="wl-task__input${walletClass}" data-task-id="${task.id}" data-required="${task.required}" placeholder="${task.placeholder || ''}" ${settings.paused ? 'disabled' : ''} />
-            <div class="wl-task__error" id="err-${task.id}">This field is required</div>`;
-          tasksContainer.appendChild(card);
-
-          // Border highlight on input
-          const input = card.querySelector('input');
-          input.addEventListener('input', () => {
-            card.classList.toggle('wl-task--filled', input.value.trim().length > 0);
-            input.classList.remove('error');
-            card.querySelector('.wl-task__error').classList.remove('show');
-          });
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = Math.max(0, p.life);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
         });
 
-        // Disable submit if paused
-        submitBtn.disabled = settings.paused;
+        particles = particles.filter(p => p.life > 0);
+        if (particles.length > 0) {
+          animId = requestAnimationFrame(update);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          animId = null;
+        }
+      }
+
+      function burst() {
+        resize();
+        const startX = window.innerWidth / 2;
+        const startY = window.innerHeight * 0.45;
+        for (let i = 0; i < 90; i++) {
+          particles.push(createParticle(startX, startY));
+        }
+        if (!animId) update();
+      }
+
+      return { burst };
+    })();
+
+    // ── Animated Whitelist Quests Modal Logic ───────────────
+    (function() {
+      const overlay = document.getElementById('crew-modal-overlay');
+      const closeBtn = document.getElementById('crew-modal-close');
+      const backdrop = document.getElementById('crew-modal-backdrop');
+      const formArea = document.getElementById('card-form-area');
+      const passArea = document.getElementById('card-pass-area');
+      const joinForm = document.getElementById('join-form');
+      const tasksContainer = document.getElementById('quest-tasks-list');
+      const submitBtn = document.getElementById('btn-submit-whitelist');
+      const statusAlert = document.getElementById('join-status-alert');
+      const charActor = document.getElementById('char-actor');
+      const charBubble = document.getElementById('char-bubble');
+      const charStand = document.getElementById('char-stand');
+      const passDoneBtn = document.getElementById('btn-pass-done');
+      const wlTitleEl = document.getElementById('wl-form-title');
+      const wlSubtitleEl = document.getElementById('wl-form-subtitle');
+      const captchaQuestionEl = document.getElementById('captcha-question');
+      const captchaAnswerInput = document.getElementById('captcha-answer');
+      const errCaptcha = document.getElementById('err-captcha');
+
+      let currentCaptcha = { question: '5 + 3 = ?', answer: 8 };
+
+      function refreshCaptcha() {
+        if (typeof HomiesDB !== 'undefined' && HomiesDB.generateCaptcha) {
+          currentCaptcha = HomiesDB.generateCaptcha();
+        } else {
+          const a = Math.floor(Math.random() * 10) + 1;
+          const b = Math.floor(Math.random() * 10) + 1;
+          currentCaptcha = { question: `${a} + ${b} = ?`, answer: a + b };
+        }
+        if (captchaQuestionEl) captchaQuestionEl.textContent = currentCaptcha.question;
+        if (captchaAnswerInput) {
+          captchaAnswerInput.value = '';
+          captchaAnswerInput.classList.remove('error');
+        }
+        if (errCaptcha) errCaptcha.classList.remove('show');
+      }
+
+      function renderTasks() {
+        if (!tasksContainer) return;
+        const tasks = typeof HomiesDB !== 'undefined' ? HomiesDB.getTasks() : [];
+        if (!tasks || tasks.length === 0) return;
+
+        tasksContainer.innerHTML = tasks.map((task, idx) => {
+          const num = idx + 1;
+          const isReq = !!task.required;
+          const isWallet = task.type === 'wallet';
+          const link = (task.links && task.links[0]) ? task.links[0] : (task.type === 'twitter_follow' || task.type === 'twitter_engage' ? 'https://x.com/HomiesART' : '');
+          const linkText = task.type === 'twitter_follow' ? 'Follow @HomiesART ↗' : (task.type === 'twitter_engage' ? 'Open Post ↗' : (link ? 'Open Link ↗' : ''));
+
+          return `
+            <div class="quest-task-card" data-task-id="${task.id}">
+              <div class="quest-task-header">
+                <div class="quest-task-title-group">
+                  <span class="quest-num-pill">QUEST ${num}</span>
+                  <h3 class="quest-task-title">${task.title}</h3>
+                  ${isReq ? '<span class="quest-req-badge">REQUIRED</span>' : ''}
+                </div>
+                ${linkText ? `<a href="${link}" target="_blank" rel="noopener" class="quest-action-link">${linkText}</a>` : ''}
+              </div>
+              <div class="input-wrap">
+                <input
+                  type="text"
+                  id="proof-${task.id}"
+                  class="form-input ${isWallet ? 'font-mono' : ''}"
+                  style="${isWallet ? 'font-family: var(--font-mono); font-size: 13px;' : ''}"
+                  placeholder="${task.placeholder || (isWallet ? '0x1234567890abcdef1234567890abcdef12345678' : 'Enter your proof')}"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="field-error" id="err-proof-${task.id}">Please complete this quest proof</div>
+            </div>
+          `;
+        }).join('');
+
+        // Attach input listeners to clear errors on typing
+        tasks.forEach(task => {
+          const input = document.getElementById(`proof-${task.id}`);
+          const err = document.getElementById(`err-proof-${task.id}`);
+          if (input && err) {
+            input.addEventListener('input', () => {
+              input.classList.remove('error');
+              err.classList.remove('show');
+            });
+          }
+        });
+      }
+
+      function syncUIWithSettings() {
+        const settings = typeof HomiesDB !== 'undefined' ? HomiesDB.getSettings() : { paused: false };
+
+        if (wlTitleEl) {
+          wlTitleEl.textContent = settings.whitelistTitle || 'Homies Whitelist Quests';
+        }
+        if (wlSubtitleEl) {
+          wlSubtitleEl.textContent = settings.whitelistSubtitle || 'Complete the quests and enter proof details to reserve your spot in the crew.';
+        }
+
+        const headerStatusBadge = document.getElementById('status-badge');
+        if (headerStatusBadge) {
+          const badgeText = headerStatusBadge.querySelector('span');
+          if (badgeText) {
+            badgeText.textContent = settings.paused ? 'CREW PAUSED' : 'CREW OPEN';
+          }
+          if (settings.paused) {
+            headerStatusBadge.classList.add('status-badge--paused');
+          } else {
+            headerStatusBadge.classList.remove('status-badge--paused');
+          }
+        }
+
+        if (statusAlert) {
+          if (settings.paused) {
+            statusAlert.innerHTML = `
+              <div class="crew-alert crew-alert--paused">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                <span>Applications are currently paused by the team. Please check back later!</span>
+              </div>`;
+            if (submitBtn) submitBtn.disabled = true;
+          } else {
+            statusAlert.innerHTML = '';
+            if (submitBtn) submitBtn.disabled = false;
+          }
+        }
       }
 
       function openModal() {
-        formArea.classList.remove('hidden');
-        success.classList.remove('show');
+        syncUIWithSettings();
         renderTasks();
+        refreshCaptcha();
+
         overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+
+        // Trigger character pose and speech
+        if (charBubble) {
+          charBubble.textContent = "JOIN THE CREW!";
+          setTimeout(() => {
+            charBubble.textContent = "COMPLETE QUESTS!";
+          }, 850);
+        }
       }
 
       function closeModal() {
         overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
 
-      // Open modal on CTA clicks
+      // Attach open listeners to all CTA buttons
       document.querySelectorAll('#hero-join-btn, #nav-join-btn').forEach(btn => {
         btn.addEventListener('click', openModal);
       });
 
-      closeBtn.addEventListener('click', closeModal);
-
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeModal();
-      });
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+      if (passDoneBtn) passDoneBtn.addEventListener('click', closeModal);
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+        if (e.key === 'Escape' && overlay.classList.contains('open')) {
+          closeModal();
+        }
       });
 
-      // Submit
-      submitBtn.addEventListener('click', () => {
-        const settings = HomiesDB.getSettings();
-        if (settings.paused) return;
+      // Submit Whitelist Application
+      if (submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const settings = typeof HomiesDB !== 'undefined' ? HomiesDB.getSettings() : { paused: false };
+          if (settings.paused) return;
 
-        const tasks = HomiesDB.getTasks();
-        const proofs = {};
-        let valid = true;
+          const tasks = typeof HomiesDB !== 'undefined' ? HomiesDB.getTasks() : [];
+          let hasError = false;
+          const collectedProofs = {};
 
-        // Validate each task
-        tasks.forEach(task => {
-          const input = document.querySelector(`[data-task-id="${task.id}"]`);
-          const errEl = document.getElementById(`err-${task.id}`);
-          const val = input?.value?.trim() || '';
-          proofs[task.id] = val;
+          tasks.forEach(task => {
+            const input = document.getElementById(`proof-${task.id}`);
+            const err = document.getElementById(`err-proof-${task.id}`);
+            const val = input ? input.value.trim() : '';
+            collectedProofs[task.id] = val;
 
-          if (task.required && !val) {
-            valid = false;
-            input.classList.add('error');
-            errEl.classList.add('show');
-          }
-        });
+            if (task.required) {
+              if (!val) {
+                if (input) input.classList.add('error');
+                if (err) {
+                  err.textContent = `Please complete this ${task.title} quest`;
+                  err.classList.add('show');
+                }
+                hasError = true;
+              } else if (task.type === 'wallet' && !/^0x[a-fA-F0-9]{40}$/.test(val)) {
+                if (input) input.classList.add('error');
+                if (err) {
+                  err.textContent = 'Please enter a valid 0x EVM wallet address';
+                  err.classList.add('show');
+                }
+                hasError = true;
+              } else {
+                if (input) input.classList.remove('error');
+                if (err) err.classList.remove('show');
+              }
+            }
+          });
 
-        if (!valid) return;
-
-        // Save application
-        HomiesDB.addApplication({ proofs });
-
-        // Show success
-        formArea.classList.add('hidden');
-        success.classList.add('show');
-      });
-
-      function syncUIWithSettings() {
-        const settings = HomiesDB.getSettings();
-        const headerStatusBadge = document.getElementById('status-badge');
-        if (headerStatusBadge) {
-          if (settings.paused) {
-            headerStatusBadge.classList.add('status-badge--paused');
-            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW PAUSED';
+          // Verify CAPTCHA
+          const userAns = captchaAnswerInput ? captchaAnswerInput.value.trim() : '';
+          if (!userAns || parseInt(userAns, 10) !== currentCaptcha.answer) {
+            if (captchaAnswerInput) captchaAnswerInput.classList.add('error');
+            if (errCaptcha) {
+              errCaptcha.textContent = 'Incorrect math verification answer';
+              errCaptcha.classList.add('show');
+            }
+            hasError = true;
           } else {
-            headerStatusBadge.classList.remove('status-badge--paused');
-            headerStatusBadge.querySelector('span:last-child').textContent = 'CREW OPEN';
+            if (captchaAnswerInput) captchaAnswerInput.classList.remove('error');
+            if (errCaptcha) errCaptcha.classList.remove('show');
           }
-        }
-        if (overlay && overlay.classList.contains('open')) {
-          renderTasks();
-        }
+
+          if (hasError) return;
+
+          // Generate Application ID & serial
+          const serialNum = Math.floor(1000 + Math.random() * 9000);
+          const appId = `app_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+          const passId = `#HM-${serialNum}`;
+          const today = new Date().toISOString().split('T')[0].replace(/-/g, '.');
+
+          // Persist Application record into HomiesDB & MongoDB
+          const applicationRecord = {
+            id: appId,
+            passId: passId,
+            status: 'pending',
+            timestamp: new Date().toISOString(),
+            proofs: collectedProofs,
+          };
+          if (typeof HomiesDB !== 'undefined') {
+            HomiesDB.addApplication(applicationRecord);
+          }
+
+          // Extract wallet and handle for pass display
+          const walletTask = tasks.find(t => t.type === 'wallet');
+          const twitterTask = tasks.find(t => t.type === 'twitter_follow' || t.type === 'twitter_engage');
+          const walletVal = walletTask && collectedProofs[walletTask.id] ? collectedProofs[walletTask.id] : '0xVerifiedWallet';
+          const handleVal = twitterTask && collectedProofs[twitterTask.id] ? collectedProofs[twitterTask.id] : '@applicant';
+
+          // Update Confirmation Pass View
+          const passIdText = document.getElementById('pass-id-text');
+          const passHandleVal = document.getElementById('pass-handle-val');
+          const passWalletVal = document.getElementById('pass-wallet-val');
+          const passDateVal = document.getElementById('pass-date-val');
+
+          if (passIdText) passIdText.textContent = passId;
+          if (passHandleVal) passHandleVal.textContent = handleVal.startsWith('@') ? handleVal : `@${handleVal}`;
+          if (passWalletVal) {
+            passWalletVal.textContent = walletVal.length > 14
+              ? `${walletVal.slice(0, 6)}...${walletVal.slice(-4)}`
+              : walletVal;
+            passWalletVal.title = walletVal;
+          }
+          if (passDateVal) passDateVal.textContent = today;
+
+          // Switch to pass display with animation
+          if (formArea) formArea.style.display = 'none';
+          if (passArea) passArea.style.display = 'block';
+
+          // Animate character celebration
+          if (charBubble) charBubble.textContent = "YOU'RE IN!";
+          if (charStand) charStand.classList.add('char-celebrate');
+
+          // Fire festive confetti!
+          Confetti.burst();
+          setTimeout(Confetti.burst, 400);
+        });
       }
 
-      // Initial header badge sync on page load
+      if (captchaAnswerInput) {
+        captchaAnswerInput.addEventListener('input', () => {
+          captchaAnswerInput.classList.remove('error');
+          if (errCaptcha) errCaptcha.classList.remove('show');
+        });
+      }
+
+      // Initial task render and badge sync
+      renderTasks();
       syncUIWithSettings();
 
-      // Listen for instant real-time updates from HomiesDB / Admin Panel / MongoDB
+      // Listen for instant admin / MongoDB updates
       window.addEventListener('homies-db-updated', () => {
         syncUIWithSettings();
+        renderTasks();
       });
     })();
   </script>
