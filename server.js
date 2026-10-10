@@ -60,7 +60,6 @@ const DEFAULT_SETTINGS = {
   paused: false,
   whitelistTitle: 'Homies Whitelist Quests',
   whitelistSubtitle: 'Complete the quests and enter proof details to reserve your spot in the crew.',
-  adminPIN: 'homies2026',
 };
 
 const DEFAULT_APPLICATIONS = [
@@ -584,25 +583,13 @@ app.post('/api/applications/bulk-delete', async (req, res) => {
   }
 });
 
-app.post('/api/admin/verify-pin', async (req, res) => {
-  try {
-    const { pin } = req.body;
-    let correctPIN = memoryStore.settings.adminPIN || 'homies2026';
-
-    if (hasActiveDb()) {
-      try {
-        const pinDoc = await SettingModel.findOne({ key: 'adminPIN' }).lean();
-        if (pinDoc && pinDoc.value) correctPIN = pinDoc.value;
-      } catch (err) {
-        console.warn('[Verify PIN DB]', err.message);
-      }
-    }
-
-    const valid = String(pin).trim() === String(correctPIN).trim();
-    res.json({ valid });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+app.post('/api/admin/verify-pin', (req, res) => {
+  const configuredPassword = process.env.ADMIN_PASSWORD;
+  if (!configuredPassword) {
+    return res.status(503).json({ valid: false, error: 'Admin login is not configured. Set ADMIN_PASSWORD in Vercel Environment Variables.' });
   }
+  const { pin } = req.body || {};
+  res.json({ valid: typeof pin === 'string' && pin.length > 0 && pin === configuredPassword });
 });
 
 app.post('/api/reset-defaults', async (req, res) => {
