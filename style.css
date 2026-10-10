@@ -418,6 +418,16 @@ header {
   height: 16px;
 }
 
+#nav-opensea:hover {
+  border-color: rgba(32, 129, 226, 0.45);
+}
+
+#nav-opensea svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
 .nav-btn .btn-label {
   display: none;
 }
