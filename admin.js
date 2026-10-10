@@ -22,18 +22,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function handleLogin() {
+  async function handleLogin() {
     const pin = authPinInput.value.trim();
-    if (HomiesDB.verifyPIN(pin)) {
+    if (!pin) {
+      authError.textContent = 'Enter your admin password.';
+      authPinInput.focus();
+      return;
+    }
+
+    authSubmitBtn.disabled = true;
+    authError.textContent = '';
+    try {
+      const response = await fetch('/api/admin/verify-pin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin })
+      });
+      const result = await response.json();
+      if (!response.ok || !result.valid) {
+        authError.textContent = result.error || 'Incorrect admin password.';
+        authPinInput.focus();
+        authPinInput.select();
+        return;
+      }
+
       sessionStorage.setItem(AUTH_KEY, 'true');
       authModal.classList.add('hidden');
-      authError.textContent = '';
       initDashboard();
       showToast('Welcome to Homies Admin HQ!', 'success');
-    } else {
-      authError.textContent = 'Incorrect PIN. Try default: homies2026';
-      authPinInput.focus();
-      authPinInput.select();
+    } catch (error) {
+      authError.textContent = 'Unable to verify password. Please try again.';
+    } finally {
+      authSubmitBtn.disabled = false;
     }
   }
 
