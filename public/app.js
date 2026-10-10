@@ -1,5 +1,5 @@
 /**
- * Homies — Shared Data Layer with MongoDB Cloud Persistence
+ * Homies: Shared Data Layer with MongoDB Cloud Persistence
  * Manages tasks, applications, and settings for whitelist system with
  * real-time server synchronisation, multi-tab BroadcastChannel, and
  * instant local-first fallback.

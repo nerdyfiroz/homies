@@ -1,5 +1,5 @@
 /**
- * Homies Admin Panel — Logic & Interactivity
+ * Homies Admin Panel: Logic & Interactivity
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="proof-snippet">
                   <span style="color: var(--text-muted); font-size: 11px;">Proof:</span>
                   ${twitterVal.startsWith('http') 
-                    ? `<a href="${twitterVal}" target="_blank" rel="noopener">Link ↗</a>` 
+                    ? `<a href="${twitterVal}" target="_blank" rel="noopener">Link</a>` 
                     : `<span>${twitterVal}</span>`}
                 </div>` : ''}
             </div>
@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="detail-row">
           <div class="detail-row__label">${task.title} (${task.type})</div>
           <div class="detail-row__val">
-            ${isUrl ? `<a href="${proofVal}" target="_blank" rel="noopener">${proofVal} ↗</a>` : proofVal}
+            ${isUrl ? `<a href="${proofVal}" target="_blank" rel="noopener">${proofVal}</a>` : proofVal}
           </div>
         </div>`;
     });
